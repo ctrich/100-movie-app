@@ -18,9 +18,9 @@
   --fs-200: 0.875rem;
 
   /* font-families */
-  /* --ff-serif: "Bellefair", serif;
-    --ff-sans-cond: "Barlow Condensed", sans-serif;
-    --ff-sans-normal: "Barlow", sans-serif; */
+  /* --ff-serif: "Michroma", serif;*/
+  --ff-sans-cond: "Roboto", sans-serif;
+  /* --ff-sans-normal: "Barlow", sans-serif;  */
 }
 
 @media (min-width: 35em) {
@@ -656,12 +656,13 @@ body {
 .primary-header {
   justify-content: space-between;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .logo {
-  width: 5rem;
-  padding-left: 2rem;
+  width: 15rem;
   padding-top: 1rem;
+  padding-left: 1rem;
 }
 
 .primary-navigation {
@@ -678,27 +679,24 @@ body {
 
 @media (min-width: 35em) {
   .primary-navigation {
-    --gap: clamp(0.5rem, 5vw, 10rem);
+    --gap: clamp(0.5rem, 3vw, 10rem);
     padding-inline: clamp(3rem, 5vw, 10rem);
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     align-items: flex-end;
-    background-color: hsl(var(--clr-light) / 0.1);
+    justify-content: space-around;
+    /* background-color: hsl(var(--clr-light) / 0.1); */
   }
 
   .logo {
-    padding-top: 0;
+    padding: 1rem 0;
   }
 }
 
-@media (min-width: 35em) and (max-width: 44.999em) {
+@media (min-width: 35em) and (max-width: 66em) {
   .primary-header {
-    overflow-x: hidden;
-    justify-content: space-around;
-  }
-
-  .primary-header > div {
-    display: none;
+    --gap: 0;
+    flex-direction: column;
   }
 
   nav {
@@ -706,9 +704,14 @@ body {
   }
 }
 
-@media (min-width: 45em) {
+@media (min-width: 66em) {
   .primary-navigation {
     margin-block: 2rem;
+  }
+
+  .logo {
+    padding: 1rem 0;
+    padding-inline: clamp(1rem, 3vw, 5rem);
   }
 }
 
@@ -716,7 +719,7 @@ body {
   display: none;
 }
 
-@media (max-width: 35em) {
+@media (max-width: 34.999em) {
   .primary-navigation {
     --underline-gap: 0.5rem;
     position: fixed;
