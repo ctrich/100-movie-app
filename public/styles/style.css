@@ -550,9 +550,8 @@ body {
 }
 
 .container {
-  padding-inline: 2rem;
   margin-inline: auto;
-  max-width: 80rem;
+  max-width: 150rem;
 }
 
 .sr-only {
