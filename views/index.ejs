@@ -17,6 +17,20 @@
 
   <body class="bg-dark container">
     <%- include('partials/header.ejs') %>
-    <main></main>
+    <main>
+      <div>
+        <img
+          srcset="<%= `${imageURL}w300${popularMovies[0].backdrop_path} 300w,
+        ${imageURL}w780${popularMovies[0].backdrop_path} 780w,
+        ${imageURL}w1280${popularMovies[0].backdrop_path} 1280w` %>"
+          src="<%=`${imageURL}original$popularMovies[0].backdrop_path}` %>"
+          alt=""
+        />
+        <img
+          src="<%= `${imageURL}original${popularMovies[0].poster_path}` %>"
+          alt="movie poster"
+        />
+      </div>
+    </main>
   </body>
 </html>
