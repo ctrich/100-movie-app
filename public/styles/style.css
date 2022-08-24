@@ -681,10 +681,14 @@ body {
 }
 
 .search-bar {
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   border: 0;
   height: 1.5rem;
   width: 100%;
+}
+
+.search-bar::placeholder {
+  font-size: var(--fs-200);
 }
 
 @media (min-width: 40em) {
@@ -717,8 +721,8 @@ body {
 @media (min-width: 66em) {
   .primary-navigation {
     margin-block: 2rem;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
   }
 
   .logo {
