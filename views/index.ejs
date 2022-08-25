@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streamlabs | Home</title>
+    <title>Stream Labs | Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,18 +18,43 @@
   <body class="bg-dark container">
     <%- include('partials/header.ejs') %>
     <main>
-      <div>
-        <img
-          srcset="<%= `${imageURL}w300${popularMovies[0].backdrop_path} 300w,
-        ${imageURL}w780${popularMovies[0].backdrop_path} 780w,
-        ${imageURL}w1280${popularMovies[0].backdrop_path} 1280w` %>"
-          src="<%=`${imageURL}original$popularMovies[0].backdrop_path}` %>"
-          alt=""
-        />
-        <img
-          src="<%= `${imageURL}original${popularMovies[0].poster_path}` %>"
-          alt="movie poster"
-        />
+      <div class="arrow-positioner relative">
+        <div class="arrow-container left-arrow">
+          <i class="arrow left"></i>
+        </div>
+        <div class="carousel-container">
+          <div class="carousel flex">
+            <% for (let i = 0; i < nowPlaying.length / 2; i++) { %> <% loading =
+            i > 3 ? 'lazy' : ''; %>
+            <div class="slide-card relative">
+              <img
+                class="slide-backdrop"
+                loading="<%= `${loading}` %>"
+                srcset="<%= `${imageURL}w780${nowPlaying[i].backdrop_path} 780w,
+              ${imageURL}w1280${nowPlaying[i].backdrop_path} 1280w` %>"
+                width="1280px"
+                height="720px"
+                alt=""
+              />
+              <img
+                class="slide-poster"
+                loading="<%= `${loading}` %>"
+                srcset="<%=
+            `${imageURL}w500${nowPlaying[i].poster_path} 500w,
+            ${imageURL}w780${nowPlaying[i].poster_path} 780w` %>"
+                src="<%=
+            `${imageURL}original${nowPlaying[i].poster_path}` %>"
+                width="780px"
+                height="1170px"
+                alt="movie poster"
+              />
+            </div>
+            <% } %>
+          </div>
+        </div>
+        <div class="arrow-container right-arrow">
+          <i class="arrow right"></i>
+        </div>
       </div>
     </main>
   </body>
