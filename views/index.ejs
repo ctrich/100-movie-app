@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lobster&family=Righteous&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/style.css" />
@@ -17,7 +17,20 @@
 
   <body class="bg-dark container">
     <%- include('partials/header.ejs') %>
-    <main>
+    <main class="flex">
+      <div class="main-content--gradient">
+        <section class="main-content flex">
+          <h3 class="ff-cursive text-white text-center">
+            Home base for all of your streaming needs!
+          </h3>
+          <!-- <p class="letter-spacing-3 ff-right-cursive text-white text-center">
+            Streambase allows you see where your favorite movies and shows are
+            available. You can also save them to your watchlist to view whenever
+            you are ready.
+          </p> -->
+        </section>
+      </div>
+
       <div class="arrow-positioner relative">
         <div class="arrow-container left-arrow">
           <i class="arrow left"></i>
@@ -36,6 +49,7 @@
                 height="720px"
                 alt=""
               />
+              <!-- <h5 class="text-white text-center"><%= nowPlaying[i].title %></h5> -->
               <img
                 class="slide-poster"
                 loading="<%= `${loading}` %>"
