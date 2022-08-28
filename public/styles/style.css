@@ -3,9 +3,10 @@
 /*---------------------*/
 
 :root {
-  --clr-dark: 220 34% 26%;
-  --clr-light: 183 44% 46%;
-  --clr-dark-accent: 220 34% 26%;
+  --clr-dark: 0 0% 17%;
+  --clr-dark-accent: 273 100% 2%;
+  -cor-medium: 259 98% 19%;
+  --clr-light: 258 84% 37%;
   --clr-white: 0 0% 100%;
 
   /* font-sizes */
@@ -537,6 +538,7 @@ template {
 /*BODY*/
 
 body {
+  height: 100vh;
   font-size: var(--fs-400);
 }
 
@@ -695,10 +697,69 @@ body {
   padding-left: 10rem;
   margin-bottom: 1rem;
   align-items: flex-start;
-  background-color: hsl(var(--clr-light) / 0.8);
+  /* background-image: linear-gradient(
+    to left bottom,
+    #551b85,
+    #5d2397,
+    #652ba9,
+    #6c34bc,
+    #733dd0,
+    #7340d3,
+    #7242d5,
+    #7245d8,
+    #6b41ca,
+    #653ebc,
+    #5e3aae,
+    #5837a1
+  ); */
+  /* background-image: linear-gradient(
+    to left bottom,
+    #4c0489,
+    #52069c,
+    #5709af,
+    #5a0ec3,
+    #5d14d8,
+    #5b16da,
+    #5817dc,
+    #5619de,
+    #5017ce,
+    #4914be,
+    #4312ae,
+    #3d109f
+  ); */
+  background-image: linear-gradient(
+    to left bottom,
+    #390466,
+    #40057a,
+    #47068f,
+    #4c09a5,
+    #500ebc,
+    #4e0fc1,
+    #4c0fc5,
+    #4910ca,
+    #420bbd,
+    #3c07b0,
+    #3503a3,
+    #2f0096
+  );
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  /* background-image: linear-gradient(
+    to left bottom,
+    #06000b,
+    #190a27,
+    #230e43,
+    #2d1061,
+    #361081,
+    #370e89,
+    #370c91,
+    #370a99,
+    #31078a,
+    #2a047b,
+    #24026c,
+    #1e015e
+  ); */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .li-search-bar {
