@@ -31,6 +31,7 @@
     --fs-800: 5rem;
     --fs-700: 2.5rem;
     --fs-600: 2rem;
+    --fs-500: 1.8rem;
     --fs-400: 1rem;
     --fs-300: 0.9rem;
   }
@@ -1027,4 +1028,9 @@ main {
   .arrow-positioner {
     margin-left: clamp(0.5rem, 1vw, 2rem);
   }
+}
+
+.section-title {
+  padding: 1rem 2rem;
+  margin: auto;
 }
