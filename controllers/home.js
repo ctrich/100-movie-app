@@ -10,7 +10,6 @@ require("dotenv").config({ path: "../config/.env" });
 module.exports = {
   getIndex: (req, res) => {
     const api_key = process.env.TMDB_API_KEY;
-    console.log(api_key);
 
     const getUpcoming = axios.get(BASE_URL + UPCOMING_MOVIES, {
       params: {
