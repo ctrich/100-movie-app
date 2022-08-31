@@ -906,7 +906,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 25rem;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .movie-overview--limit {
