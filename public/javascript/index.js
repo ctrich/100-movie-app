@@ -1,13 +1,13 @@
 //Toggle navigation on mobile
 const navToggle = document.querySelector(".mobile-nav-toggle");
 const nav = document.querySelector(".primary-navigation");
-const leftArrow = document.querySelector(".left-arrow");
-const rightArrow = document.querySelector(".right-arrow");
+// const leftArrow = document.querySelector(".left-arrow");
+// const rightArrow = document.querySelector(".right-arrow");
 const carousel = document.querySelector(".carousel-container");
 
 let slideNumber = 0;
-let touchstartX = 0;
-let touchendX = 0;
+// let touchstartX = 0;
+// let touchendX = 0;
 
 //Toggle the navigation for mobile devices
 navToggle.addEventListener("click", () => {
@@ -48,27 +48,33 @@ const moveRight = () => {
           { transform: `translateX(${slideNumber * -100}%)` },
           { transform: `translateX(${(slideNumber + 1) * -100}%)` },
         ],
-        { duration: 400, fill: "forwards" }
+        { duration: 900, fill: "forwards" }
       );
     });
 
     slideNumber++;
+    document.querySelector('.active').classList.remove('active');
+    document.querySelector(`#slide-${slideNumber + 1}`).classList.add('active');
   }
 };
 //Checks direction of swipes
-const checkDirection = () => {
-  if (touchendX < touchstartX) moveRight();
-  if (touchendX > touchstartX) moveLeft();
-};
+// const checkDirection = () => {
+//   if (touchendX < touchstartX) moveRight();
+//   if (touchendX > touchstartX) moveLeft();
+// };
 
 //event listeners for image carousel
-leftArrow.addEventListener("click", moveLeft);
-rightArrow.addEventListener("click", moveRight);
+setInterval(() => {
+  moveRight();
+}, 10000);
 
-carousel.addEventListener("touchstart", (e) => {
-  touchstartX = e.changedTouches[0].screenX;
-});
-carousel.addEventListener("touchend", (e) => {
-  touchendX = e.changedTouches[0].screenX;
-  checkDirection();
-});
+// leftArrow.addEventListener("click", moveLeft);
+// rightArrow.addEventListener("click", moveRight);
+
+// carousel.addEventListener("touchstart", (e) => {
+//   touchstartX = e.changedTouches[0].screenX;
+// });
+// carousel.addEventListener("touchend", (e) => {
+//   touchendX = e.changedTouches[0].screenX;
+//   checkDirection();
+// });
