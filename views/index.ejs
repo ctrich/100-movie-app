@@ -5,72 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Streambase | Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lobster&family=Righteous&family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/style.css" />
     <script src="/javascript/index.js" defer></script>
   </head>
 
-  <body class="container bg-dark">
+  <body class="container bg-dark ff-sans-cond">
     <%- include('partials/header.ejs') %>
-    <main class="flex">
-      <div class="main-content--gradient">
-        <section class="main-content flex">
-          <h3 class="ff-cursive text-white text-center">
-            Home base for all of your streaming needs!
-          </h3>
-          <!-- <p class="letter-spacing-3 ff-right-cursive text-white text-center">
-            Streambase allows you see where your favorite movies and shows are
-            available. You can also save them to your watchlist to view whenever
-            you are ready.
-          </p> -->
-        </section>
-      </div>
-
-      <div class="arrow-positioner relative">
-        <div class="arrow-container left-arrow">
-          <i class="arrow left"></i>
-        </div>
-        <h3 class="text-white section-title fs-500">NOW PLAYING</h3>
-        <div class="carousel-container">
-          <div class="carousel flex">
-            <% for (let i = 0; i < nowPlaying.length / 2; i++) { %> <% loading =
-            i > 3 ? 'lazy' : ''; %>
-            <div class="slide-card relative">
-              <img
-                class="slide-backdrop"
-                loading="<%= `${loading}` %>"
-                srcset="<%= `${imageURL}w780${nowPlaying[i].backdrop_path} 780w,
-              ${imageURL}w1280${nowPlaying[i].backdrop_path} 1280w` %>"
-                width="1280px"
-                height="720px"
-                alt=""
-              />
-              <!-- <h5 class="text-white text-center"><%= nowPlaying[i].title %></h5> -->
-              <img
-                class="slide-poster"
-                loading="<%= `${loading}` %>"
-                srcset="<%=
-            `${imageURL}w500${nowPlaying[i].poster_path} 500w,
-            ${imageURL}w780${nowPlaying[i].poster_path} 780w` %>"
-                src="<%=
-            `${imageURL}original${nowPlaying[i].poster_path}` %>"
-                width="780px"
-                height="1170px"
-                alt="movie poster"
-              />
+    <div class="content-container">
+      <section class="carousel-container">
+        <h4 class="text-white">What are you going to watch today?</h4>
+        <!-- <div class="arrow-positioner relative">
+          <div class="arrow-container left-arrow">
+            <i class="arrow left"></i>
+          </div> -->
+          
+          <div class="slides-container">
+            <div class="carousel flex">
+              <% for (let i = 0; i < nowPlaying.length / 2; i++) { %> <% loading =
+              i > 3 ? 'lazy' : ''; %>
+              <div class="slide-card relative text-white">
+                <img
+                  class="slide-backdrop"
+                  loading="<%= `${loading}` %>"
+                  srcset="<%= `${imageURL}w780${nowPlaying[i].backdrop_path} 780w,
+                ${imageURL}w1280${nowPlaying[i].backdrop_path} 1280w` %>"
+                  width="1280px"
+                  height="720px"
+                  alt=""
+                />
+                <h3 class="movie-title fs-500"><%= nowPlaying[i].title %></h3>
+                <div class="movie-overview">
+                  <p class="movie-overview--limit fs-300"><%= nowPlaying[i].overview %></p>
+                </div>
+                <button class="more-info fs-300">More</button>
+                <!-- <h5 class="text-white text-center"><%= nowPlaying[i].title %></h5> -->
+                <!-- <img
+                  class="slide-poster"
+                  loading="<%= `${loading}` %>"
+                  srcset="<%=
+              `${imageURL}w500${nowPlaying[i].poster_path} 500w,
+              ${imageURL}w780${nowPlaying[i].poster_path} 780w` %>"
+                  src="<%=
+              `${imageURL}original${nowPlaying[i].poster_path}` %>"
+                  width="780px"
+                  height="1170px"
+                  alt="movie poster"
+                /> -->
+              </div>
+              <% } %>
             </div>
-            <% } %>
-          </div>
-        </div>
-        <div class="arrow-container right-arrow">
-          <i class="arrow right"></i>
-        </div>
-      </div>
-    </main>
+          <!-- </div>
+          <div class="arrow-container right-arrow">
+            <i class="arrow right"></i>
+          </div> -->
+        <!-- </div> -->
+      </section>
+      <section class="trailers">
+        <h3 class="section-title fs-500">New Trailers</h3>
+        <%- include('partials/scroller.ejs', { movies: upComing, imageURL: imageURL }); %>
+      </section>
+    </div>
   </body>
 </html>
