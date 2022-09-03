@@ -711,7 +711,7 @@ body {
   background-color: #374151;
   border-radius: 20px;
   border: 0;
-  height: 2rem;
+  height: 2.3rem;
   width: 100%;
 }
 
@@ -983,7 +983,7 @@ body {
  /*scroller*/
 
  .scroller-container {
-  width: 100vw;
+  width: 100%;
   overflow: auto;
   overflow-y: hidden;
   max-height: 30rem;
