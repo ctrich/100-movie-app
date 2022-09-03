@@ -1008,6 +1008,8 @@ body {
  }
 
  .trailer-card {
+  min-width: 19rem;
+  max-width: 25rem;
   width: 85%;
   padding: 1rem 0 3rem;
   flex-shrink: 0;
@@ -1018,4 +1020,12 @@ body {
   height: auto;
   margin-bottom: .5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+ }
+
+ .trailer-play {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  fill: #E10856;
+  transform: translateX(-25%);
  }
