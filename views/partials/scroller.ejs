@@ -1,16 +1,19 @@
-<div class="scroll-container text-white flex">
-  <% movies.forEach(movie => { %>
-  <div class="trailer-card relative">
-    <img loading="lazy" 
-        class="scroll-backdrop"
-        srcset="<%= `${imageURL}w300${movie.backdrop_path} 300w,
-              ${imageURL}w780${movie.backdrop_path} 780w` %>"  
-        height="439" 
-        width="780" 
+<div class="scroller-container flex text-white">
+    <% shows.forEach(show => { %>
+    <div class="scroller-card">
+      <img 
+        loading="lazy" 
+        class="scroller-poster"
+        srcset="<%= `${imageURL}w342${show.poster_path} 342w,
+            ${imageURL}w500${show.poster_path} 500w` %>"  
+        sizes="(max-width: 500px) 342px,
+        500px"
+        height="750" 
+        width="500" 
+          
         alt="" 
-    />
-    <img class="play-button" src="/images/play.png" alt="play button">
-    <h4 class="text-center fs-500"><%= movie.title %></h4>
-  </div>
-  <% }) %>
+        />
+        <h4 class="text-center"><%= show.name %></h4>
+    </div>
+<% }) %>
 </div>

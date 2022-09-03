@@ -1,0 +1,15 @@
+<div class="scroller-container text-white flex">
+  <% movies.forEach(movie => { %>
+  <div class="trailer-card relative">
+    <img loading="lazy" 
+        class="trailer-backdrop"
+        srcset="<%= `${imageURL}w300${movie.backdrop_path} 300w,
+              ${imageURL}w780${movie.backdrop_path} 780w` %>"  
+        height="439" 
+        width="780" 
+        alt="" 
+    />
+    <h4 class="text-center fs-400"><%= movie.title %></h4>
+  </div>
+  <% }) %>
+</div>

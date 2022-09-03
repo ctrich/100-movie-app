@@ -53,10 +53,14 @@
             </div>
           </div>
       </section>
-      <!-- <section class="trailers">
-        <h3 class="section-title fs-500">New Trailers</h3>
-        <%- include('partials/scroller.ejs', { movies: upComing, imageURL: imageURL }); %>
-      </section> -->
+      <section>
+        <h3 class="section-title">Popular TV</h3>
+        <%- include('partials/scroller.ejs', { shows: popularTv, imageURL: imageURL }); %>
+      </section>
+      <section class="bg-medium">
+        <h3 class="section-title">New Trailers</h3>
+        <%- include('partials/trailerScroller', {movies: upcoming, imageURL: imageURL}); %>
+      </section>
     </div>
   </body>
 </html>
