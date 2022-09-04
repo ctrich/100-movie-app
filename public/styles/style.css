@@ -620,6 +620,17 @@ body {
   align-items: flex-start;
 }
 
+.primary-navigation a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.primary-navigation a:hover,
+.primary-navigation a:focus {
+  color: #E10856;
+}
+
 .search-bar-container {
   width: 30rem;
   margin-bottom: 2rem;
@@ -934,14 +945,13 @@ body {
  }
 
  .scroller-container::-webkit-scrollbar {
-  background-color: hsl(var(--clr-white) / .2);
+  background-color: hsl(var(--clr-white) / .1);
   border-radius: 20px;
  }
 
  .scroller-container::-webkit-scrollbar-thumb {
   background-color: hsla(184, 98%, 53%, .3);
   border-radius: 20px;
-  border: 1px solid hsl(var(--clr-dark));
  }
 
  .scroller-card {
