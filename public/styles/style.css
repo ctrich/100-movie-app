@@ -490,6 +490,10 @@ body {
   max-width: 90rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -597,6 +601,61 @@ body {
 .fs-700,
 .fs-600 {
   line-height: 1.1;
+}
+/* Sign in modal */
+
+.sign-in-modal {
+  display: flex;
+  color: hsl(var(--clr-white));
+  font-weight: bold;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  background-color: hsl(217, 19%, 27%);
+  position: fixed;
+  width: 95%;
+  min-width: 20rem;
+  max-width: 26rem;
+  max-height: 35rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio:  1 / 1.5;
+  padding-block: 2rem;
+  z-index: 10000;
+  border-radius: 10px;
+}
+
+.sign-in-modal[data-visible="false"] {
+  display: none;
+}
+
+.sign-in-modal span {
+  text-align: center;
+  display: inline-block;
+  background-color:#E10856;
+  width: 2.5rem;
+  border-radius: 5px;
+}
+
+.sign-in-button {
+  color: hsl(var(--clr-white));
+  border: 1px solid white;
+  background-color: #374151;
+  border-radius: 10px;
+  width: 80%;
+  height: 4rem;
+  cursor: pointer;
+}
+
+.sign-in-button:last-child {
+  margin-top: 2.5rem;
+}
+
+.sign-in-button:hover,
+.sign-in-button:focus {
+  background-color: hsl(216, 20%, 20%);
 }
 
 /* primary header */

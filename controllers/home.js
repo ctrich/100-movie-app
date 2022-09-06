@@ -32,7 +32,6 @@ module.exports = {
       .all([getUpcoming, getNowPlaying, getPopularTv])
       .then(
         axios.spread((...results) => {
-          console.log(results[2].data.results)
           res.render("index.ejs", {
             upcoming: results[0].data.results,
             nowPlaying: results[1].data.results,

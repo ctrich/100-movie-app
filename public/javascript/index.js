@@ -4,6 +4,8 @@ const nav = document.querySelector(".primary-navigation");
 // const leftArrow = document.querySelector(".left-arrow");
 // const rightArrow = document.querySelector(".right-arrow");
 const carousel = document.querySelector(".carousel-container");
+const signIn = document.querySelector('.sign-in-nav');
+const modal = document.querySelector('.sign-in-modal');
 
 let slideNumber = 0;
 // let touchstartX = 0;
@@ -21,6 +23,17 @@ navToggle.addEventListener("click", () => {
     navToggle.setAttribute("aria-expanded", false);
   }
 });
+
+signIn.addEventListener('click', () => {
+  const visibility = modal.getAttribute("data-visible");
+  
+  if (visibility === "false") {
+    modal.setAttribute("data-visible", true);
+  } else {
+    modal.setAttribute("data-visible", false);
+  }
+  console.log(visibility)
+})
 
 //Moves slides in image carousel left
 // const moveLeft = () => {
