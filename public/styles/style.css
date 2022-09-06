@@ -639,6 +639,15 @@ body {
   border-radius: 5px;
 }
 
+.sign-in-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1rem;
+  height: auto;
+  cursor: pointer;
+}
+
 .sign-in-button {
   color: hsl(var(--clr-white));
   border: 1px solid white;
