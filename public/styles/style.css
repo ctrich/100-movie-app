@@ -604,6 +604,18 @@ body {
 }
 /* Sign in modal */
 
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  min-width: 20rem;
+  max-width: 26rem;
+  max-height: 35rem;
+  z-index: 10000;
+}
+
 .sign-in-modal {
   display: flex;
   color: hsl(var(--clr-white));
@@ -623,11 +635,42 @@ body {
   transform: translate(-50%, -50%);
   aspect-ratio:  1 / 1.5;
   padding-block: 2rem;
-  z-index: 10000;
   border-radius: 10px;
 }
 
-.sign-in-modal[data-visible="false"] {
+.modal-create {
+  justify-content:space-evenly;
+}
+
+.sign-in-modal.form form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-modal.form input {
+  color: white;
+  font-size: var(--fs-400);
+  margin: 1rem auto;
+  padding-inline: .5rem;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #505D72;
+  border: 0;
+  border-radius: 10px;
+}
+
+.sign-in-modal.form .btn-create {
+  width: 7rem;
+  background-color: #E10856;
+}
+
+
+
+.modal-container[data-visible="false"],
+.sign-in-modal[data-visible="false"],
+.sign-in-close[data-visible="false"] {
   display: none;
 }
 
@@ -641,11 +684,12 @@ body {
 
 .sign-in-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: -16.5rem;
+  right: 1.5rem;
   width: 1rem;
   height: auto;
   cursor: pointer;
+  z-index: 2;
 }
 
 .sign-in-button {
@@ -660,6 +704,10 @@ body {
 
 .sign-in-button:last-child {
   margin-top: 2.5rem;
+}
+
+.modal-create .sign-in-button:last-child {
+  margin-top: 0;
 }
 
 .sign-in-button:hover,

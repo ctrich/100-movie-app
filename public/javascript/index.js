@@ -5,7 +5,7 @@ const nav = document.querySelector(".primary-navigation");
 // const rightArrow = document.querySelector(".right-arrow");
 const carousel = document.querySelector(".carousel-container");
 const signInNav = document.querySelector('.sign-in-nav');
-const modal = document.querySelector('.sign-in-modal');
+const modalContainer = document.querySelector('.modal-container');
 const signInClose = document.querySelector('.sign-in-close');
 
 let slideNumber = 0;
@@ -25,18 +25,52 @@ navToggle.addEventListener("click", () => {
   }
 });
 
-const OpenCloseSignIn = () => {
-  const visibility = modal.getAttribute("data-visible");
+// const OpenCloseSignInModal = () => {
+//   const visibility = modalContainer.getAttribute("data-visible");
 
-  if (visibility === "false") {
-    modal.setAttribute("data-visible", true);
-  } else {
-    modal.setAttribute("data-visible", false);
+//   if (visibility === "false") {
+//     modalContainer.setAttribute("data-visible", true);
+//   } else {
+//     modalContainer.setAttribute("data-visible", false);
+//   }
+// }
+const OpenCloseSignInModal = (e) => {
+  const mainModal =  document.getElementById('modal-main');
+  const createModal = document.getElementById('modal-create');
+
+  switch(e.target.id) {
+    case 'sign-in':
+      modalContainer.setAttribute("data-visible", true);
+      break;
+      case 'modal-close':
+        modalContainer.childNodes.forEach((element, i) =>{
+                if ((i % 2) !== 0 && element.hasAttribute("data-visible")){
+                  element.setAttribute("data-visible", false);
+                }
+              })
+        mainModal.setAttribute("data-visible", true);
+        modalContainer.setAttribute("data-visible", false);
+      break;
+    case 'btn-create':
+      createModal.setAttribute("data-visible", true);
+      mainModal.setAttribute("data-visible", false);
+      break;
+    case 'btn-create--email':
+      document.getElementById('modal-create--email').setAttribute("data-visible", true);
+      createModal.setAttribute("data-visible", false);
+      break;
+    case 'btn-sign-email':
+      document.getElementById('modal-signin--email').setAttribute("data-visible", true);
+      mainModal.setAttribute("data-visible", false);
+      break;
   }
+
+  
 }
 
-signInNav.addEventListener('click', OpenCloseSignIn);
-signInClose.addEventListener('click', OpenCloseSignIn);
+modalContainer.addEventListener('click', OpenCloseSignInModal);
+signInNav.addEventListener('click', OpenCloseSignInModal);
+// signInClose.addEventListener('click', OpenCloseSignInModal);
 
 //Moves slides in image carousel left
 // const moveLeft = () => {
