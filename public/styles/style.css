@@ -642,7 +642,7 @@ body {
   justify-content:space-evenly;
 }
 
-.sign-in-modal.form form {
+.sign-in-modal form {
   display: flex;
   flex-direction: column;
   justify-content: center;
