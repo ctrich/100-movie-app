@@ -647,6 +647,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .sign-in-modal.form input {
@@ -664,6 +665,10 @@ body {
 .sign-in-modal.form .btn-create {
   width: 7rem;
   background-color: #E10856;
+}
+
+.sign-in-modal.form label {
+  width: 80%;
 }
 
 
@@ -743,7 +748,9 @@ body {
 }
 
 .primary-navigation a:hover,
-.primary-navigation a:focus {
+.primary-navigation a:focus,
+.sign-in-nav:hover,
+.sign-in-nav:focus {
   color: #E10856;
 }
 
@@ -764,6 +771,10 @@ body {
 .search-bar::placeholder {
   font-size: var(--fs-200);
   color: #868686;
+}
+
+.sign-in-nav {
+  cursor: pointer;
 }
 
 @media (min-width: 40em) {

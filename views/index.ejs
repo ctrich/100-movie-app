@@ -13,7 +13,7 @@
   </head>
 
   <body class="container bg-dark ff-sans-cond">
-    <%- include('partials/header.ejs') %>
+    <%- include('partials/header.ejs', { loggedIn: login }); %>
     <div class="content-container">
       <%- include('partials/loginModal.ejs') %>
       <section class="carousel-container">

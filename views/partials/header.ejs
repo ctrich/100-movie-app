@@ -8,7 +8,9 @@
   <div class="search-bar-container">
     <input class="search-bar" type="search" placeholder="Search" />
   </div>
+
   
+    
   <nav>
     <ul
       id="primary-navigation"
@@ -19,7 +21,11 @@
       <li><a href="#">Movies</a></li>
       <li class="no-wrap"><a href="#">TV Shows</a></li>
       <li><a href="#">Watchlist</a></li>
-      <li class="sign-in-nav no-wrap"><a id="sign-in" href="#">Sign In</a></li>
+      <% if (loggedIn) {%>
+      <li class="sign-in-nav no-wrap"><a id="sign-out" href="/logout">Sign Out</a></li> 
+      <% } else { %>
+      <li id="sign-in" class="sign-in-nav no-wrap">Sign In</li>
+      <% } %>
     </ul>
   </nav>
 </header>
