@@ -635,7 +635,7 @@ body {
   transform: translate(-50%, -50%);
   aspect-ratio:  1 / 1.5;
   padding-block: 2rem;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .modal-create {
@@ -662,6 +662,10 @@ body {
   border-radius: 10px;
 }
 
+.sign-in-modal input::placeholder {
+  color: hsl(var(--clr-white));
+}
+
 .sign-in-modal.form .btn-create {
   width: 7rem;
   background-color: #E10856;
@@ -679,13 +683,13 @@ body {
   display: none;
 }
 
-.sign-in-modal span {
+/* .sign-in-modal span {
   text-align: center;
   display: inline-block;
   background-color:#E10856;
   width: 2.5rem;
   border-radius: 5px;
-}
+} */
 
 .sign-in-close {
   position: absolute;
@@ -914,11 +918,11 @@ body {
 .content-container {
   display: flex;
   flex-direction: column;
-  --gap: 1rem;
+  --gap: .5rem;
 }
 
 .content-container section:not(:first-child) {
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 55em) {
@@ -1098,6 +1102,10 @@ body {
   border-radius: 10px;
  }
 
+ .trailers {
+  margin-top: 2.5rem;
+ }
+
  .trailer-card {
   min-width: 19rem;
   max-width: 25rem;
@@ -1115,8 +1123,10 @@ body {
 
  .trailer-play {
   position: absolute;
-  top: 0%;
+  top: 50%;
   left: 50%;
-  fill: #E10856;
-  transform: translateX(-25%);
+  width: 40%;
+  height: 50%;
+  fill: white;
+  transform: translate(-25%, -40%);
  }

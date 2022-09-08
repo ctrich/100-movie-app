@@ -1,11 +1,11 @@
 <div class="scroller-container flex text-white">
-    <% shows.forEach(show => { %>
+    <% media.forEach(media => { %>
     <div class="scroller-card">
       <img 
         loading="lazy" 
         class="scroller-poster"
-        srcset="<%= `${imageURL}w342${show.poster_path} 342w,
-            ${imageURL}w500${show.poster_path} 500w` %>"  
+        srcset="<%= `${imageURL}w342${media.poster_path} 342w,
+            ${imageURL}w500${media.poster_path} 500w` %>"  
         sizes="(max-width: 500px) 342px,
         500px"
         height="750" 
@@ -13,7 +13,7 @@
           
         alt="" 
         />
-        <h4 class="text-center"><%= show.name %></h4>
+        <h4 class="text-center"><%= media.name || media.title %></h4>
     </div>
 <% }) %>
 </div>

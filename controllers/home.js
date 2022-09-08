@@ -4,6 +4,7 @@ const {
   NOW_PLAYING_MOVIES,
   UPCOMING_MOVIES,
   IMAGE_URL,
+  TOP_RATED,
   POPULAR_TV,
 } = require("../config/URL");
 require("dotenv").config({ path: "../config/.env" });
@@ -27,15 +28,21 @@ module.exports = {
         api_key: api_key,
       },
     });
+    const getTopRated = axios.get(BASE_URL + TOP_RATED, {
+      params: {
+        api_key: api_key,
+      },
+    })
 
     axios
-      .all([getUpcoming, getNowPlaying, getPopularTv])
+      .all([getUpcoming, getNowPlaying, getPopularTv, getTopRated])
       .then(
         axios.spread((...results) => {
           res.render("index.ejs", {
             upcoming: results[0].data.results,
             nowPlaying: results[1].data.results,
             popularTv: results[2].data.results,
+            topRated: results[3].data.results,
             imageURL: IMAGE_URL,
           });
         })

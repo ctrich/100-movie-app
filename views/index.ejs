@@ -56,7 +56,11 @@
       </section>
       <section>
         <h3 class="section-title">Popular TV</h3>
-        <%- include('partials/scroller.ejs', { shows: popularTv, imageURL: imageURL }); %>
+        <%- include('partials/scroller.ejs', { media: popularTv, imageURL: imageURL }); %>
+      </section>
+      <section>
+        <h3 class="section-title">Top Rated</h3>
+        <%- include('partials/scroller.ejs', { media: topRated, imageURL: imageURL }); %>
       </section>
       <section class="trailers bg-medium">
         <h3 class="section-title">New Trailers</h3>

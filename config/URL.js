@@ -3,6 +3,7 @@ const POPULAR_MOVIES = "movie/popular?";
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const UPCOMING_MOVIES = "movie/upcoming?";
 const NOW_PLAYING_MOVIES = "movie/now_playing?";
+const TOP_RATED = "movie/top_rated?"
 const POPULAR_TV = "tv/popular?"
 
 module.exports = {
@@ -11,5 +12,6 @@ module.exports = {
   IMAGE_URL,
   UPCOMING_MOVIES,
   NOW_PLAYING_MOVIES,
+  TOP_RATED,
   POPULAR_TV,
 };
