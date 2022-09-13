@@ -3,8 +3,9 @@ const POPULAR_MOVIES = "movie/popular?";
 const IMAGE_URL = "https://image.tmdb.org/t/p/";
 const UPCOMING_MOVIES = "movie/upcoming?";
 const NOW_PLAYING_MOVIES = "movie/now_playing?";
-const TOP_RATED = "movie/top_rated?"
-const POPULAR_TV = "tv/popular?"
+const TOP_RATED = "movie/top_rated?";
+const POPULAR_TV = "tv/popular?";
+const MULTI_SEARCH = "search/multi";
 
 module.exports = {
   BASE_URL,
@@ -14,4 +15,5 @@ module.exports = {
   NOW_PLAYING_MOVIES,
   TOP_RATED,
   POPULAR_TV,
+  MULTI_SEARCH,
 };

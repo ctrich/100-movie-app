@@ -1087,7 +1087,7 @@ body {
   border-radius: 20px;
  }
 
- .scroller-card {
+ .media-card {
   min-width: 10rem;
   max-width: 12rem;
   width: 25%;
@@ -1095,7 +1095,7 @@ body {
   flex-shrink: 0;  
 }
 
- .scroller-poster {
+ .media-poster {
   width: 100%;
   height: auto;
   margin-bottom: .5rem;
@@ -1119,6 +1119,7 @@ body {
   height: auto;
   margin-bottom: .5rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  cursor: pointer;
  }
 
  .trailer-play {
@@ -1129,4 +1130,5 @@ body {
   height: 50%;
   fill: white;
   transform: translate(-25%, -40%);
+  cursor: pointer;
  }
