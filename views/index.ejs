@@ -42,15 +42,15 @@
       </section>
       <section>
         <h3 class="section-title">Popular TV</h3>
-        <%- include('partials/scroller.ejs', { media: popularTv, imageURL: imageURL }); %>
+        <%- include('partials/scroller.ejs', { media: popularTv}); %>
       </section>
       <section>
         <h3 class="section-title">Top Rated</h3>
-        <%- include('partials/scroller.ejs', { media: topRated, imageURL: imageURL }); %>
+        <%- include('partials/scroller.ejs', { media: topRated }); %>
       </section>
       <section class="trailers bg-medium">
         <h3 class="section-title">New Trailers</h3>
-        <%- include('partials/trailerScroller', {movies: upcoming, imageURL: imageURL}); %>
+        <%- include('partials/trailerScroller', {movies: upcoming}); %>
       </section>
     </div>
   </body>

@@ -1,2 +1,9 @@
 <%- include('partials/header.ejs', { loggedIn: login }); %>
 <%- include('partials/loginModal.ejs') %>
+<main class="main-search">
+    <ul class="results-container flex">
+        <% results.forEach(media => { %>
+            <%- include('partials/mediaCard.ejs', { media: media }); %>
+     <%  }); %>
+    </ul>
+</main>

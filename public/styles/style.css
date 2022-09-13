@@ -1132,3 +1132,16 @@ body {
   transform: translate(-25%, -40%);
   cursor: pointer;
  }
+
+ .main-search {
+  color: hsl(var(--clr-white))
+ }
+
+ .results-container {
+  width: 100%;
+  padding-inline: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  --gap: 1.5rem;
+ }

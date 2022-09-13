@@ -1,5 +1,7 @@
 <div class="scroller-container flex text-white">
-    <% media.forEach(media => { %>
-        <%- include('mediaCard.ejs', { media: media }); %>
-<% }) %>
+    <ul class="flex">
+        <% media.forEach(media => { %>
+            <%- include('mediaCard.ejs', { media: media }); %>
+        <% }) %>
+    </ul>
 </div>
