@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Streambase | Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/style.css" />
-    <script src="/javascript/index.js" defer></script>
-  </head>
 
-  <body class="container bg-dark ff-sans-cond">
-    <header class="primary-header flex text-white">
-      <div class="logo-container">
-        <img class="logo" src="/images/new.png" alt="logo" />
-      </div>
-      <button class="mobile-nav-toggle" aria-controls="primary-navigation">
-        <span class="sr-only" aria-expanded="false">Menu</span>
-      </button>
-      <div class="search-bar-container">
-        <form action="/search/" method="GET">
-          <input class="search-bar" name="query" type="search" placeholder="Search"  />
-          <input type="submit" hidden>
-        </form>
-      </div>
-      <nav>
-        <ul
-          id="primary-navigation"
-          data-visible="false" 
-          class="primary-navigation flex text-white fs-200 ff-sans-cond"
-        >
-          <li><a href="/">Home</a></li>
-          <li><a href="#">Movies</a></li>
-          <li class="no-wrap"><a href="#">TV Shows</a></li>
-          <li><a href="#">Watchlist</a></li>
-          <% if (loggedIn) {%>
-          <li class="sign-in-nav no-wrap"><a id="sign-out" href="/logout">Sign Out</a></li> 
-          <% } else { %>
-          <li id="sign-in" class="sign-in-nav no-wrap">Sign In</li>
-          <% } %>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streambase | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/style.css" />
+  <script src="/javascript/index.js" defer></script>
+</head>
+
+<body class="container bg-dark ff-sans-cond">
+  <header class="primary-header flex text-white">
+    <div class="logo-container">
+      <img class="logo" src="/images/new.png" alt="logo" />
+    </div>
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation">
+      <span class="sr-only" aria-expanded="false">Menu</span>
+    </button>
+    <div class="search-bar-container">
+      <form action="/search/" method="GET">
+        <input class="search-bar" name="query" type="search" placeholder="Search" />
+        <input type="submit" hidden>
+      </form>
+    </div>
+    <nav>
+      <ul id="primary-navigation" data-visible="false" class="primary-navigation flex text-white fs-200 ff-sans-cond">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Movies</a></li>
+        <li class="no-wrap"><a href="#">TV Shows</a></li>
+        <li><a href="#">Watchlist</a></li>
+        <% if (loggedIn) {%>
+        <li class="sign-in-nav no-wrap"><a id="sign-out" href="/logout">Sign Out</a></li>
+        <% } else { %>
+        <li id="sign-in" class="sign-in-nav no-wrap">Sign In</li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>

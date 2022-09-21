@@ -1,16 +1,16 @@
 <%- include('partials/header.ejs', { loggedIn: login }); %>
 <%- include('partials/loginModal.ejs') %>
 <main class="main-search">
-    <div class="results-container flex">
-        <% results.forEach(media => { %>
-            <div class="result-item">
-                <%- include('partials/mediaCard.ejs', { media: media }); %>
-                <div class="result-item--info flex">
-                    <h4 class="fs-500"><%= media.name || media.title %></h4>
-                    <span><%= media.release_date || media.first_air_date %></span>
-                    <p><%= media.overview %></p>
-                </div>
-            </div>
-     <%  }); %>
+  <div class="results-container flex">
+    <% results.forEach(media => { %>
+    <div class="result-item">
+      <%- include('partials/mediaCard.ejs', { media: media }); %>
+      <div class="result-item--info flex">
+        <h4 class="fs-500"><%= media.name || media.title %></h4>
+        <span><%= media.release_date || media.first_air_date %></span>
+        <p><%= media.overview %></p>
+      </div>
     </div>
+    <%  }); %>
+  </div>
 </main>

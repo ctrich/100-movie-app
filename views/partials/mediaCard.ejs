@@ -1,15 +1,6 @@
 <div class="media-card">
-  <img 
-    loading="lazy" 
-    class="media-poster"
-    srcset="<%= `${imageURL}w342${media.poster_path} 342w,
-        ${imageURL}w500${media.poster_path} 500w` %>"  
-    sizes="(max-width: 500px) 342px,
-    500px"
-    height="750" 
-    width="500" 
-      
-    alt="" 
-    />
-    <h4 class="text-center"><%= media.name || media.title %></h4>
+  <img loading="lazy" class="media-poster" srcset="<%= `${imageURL}w342${media.poster_path} 342w,
+        ${imageURL}w500${media.poster_path} 500w` %>" sizes="(max-width: 500px) 342px,
+    500px" height="750" width="500" alt="" />
+  <h4 class="text-center"><%= media.name || media.title %></h4>
 </div>
