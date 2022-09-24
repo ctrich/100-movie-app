@@ -29,7 +29,7 @@ module.exports = {
                         results: results[0].data,
                         credits: results[1].data.crew.filter(crew => crew.job === "Director"),
                         providers: results[2].data.results.US,
-                        imageURL: IMAGE_URL,
+            imageURL: IMAGE_URL,
                     })
                 })
             ).catch(err => {
