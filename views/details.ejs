@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streambase | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/style.css" />
+  <script src="/javascript/index.js" defer></script>
+</head>
+
+<body class="container bg-dark ff-sans-cond text-white">
+  <%- include('partials/header.ejs', { loggedIn: login }); %>
+  <%- include('partials/loginModal.ejs') %>
+  <main class="main-details" style="background-image: url(' <%= `${imageURL}w1280${results.backdrop_path}` %>');">
+    <div class="main-details--background">
+      <div class="main-details--container flex">
+
+        <div class="main-details-text">
+          <img src="<%= `${imageURL}w342${results.poster_path}` %>">
+          <div class="meta-container">
+            <div>
+              <h3 class="media-title fs-500"><%= results.name || results.title %></h3>
+              <h6>Type:</h6>
+              <p><%= results.media_type %></p>
+              <div>
+                <h6>Genres:</h6>
+                <% results.genres.forEach((genre, i) => { %>
+                <% if (i < results.genres.length -1) { %>
+                <span><%= genre.name + " | " %></span>
+                <%} else {%>
+                <span><%= genre.name %></span>
+                <%}%>
+            <%})%>
+              </div>
+              <h6>Runtime: </h6>
+              <p><%= results.runtime || results.episode_run_time %></p>
+              <%if (results.created_by) {%>
+              <div>
+                <h6>Created By:</h6>
+                <% results.created_by.forEach((creator, i) => { %>
+                <% if (i < results.created_by.length -1) { %>
+                <span><%= creator.name + " , " %></span>
+                <%} else {%>
+                <span><%= creator.name %></span>
+                <%}%>
+              <%})%>
+              </div>
+              <%} else { %>
+              <h6>Director:</h6>
+              <span><%= credits[0] ? credits[0].name : ''%></span>
+              <%}%>
+            </div>
+          </div>
+          
+        </div>
+        <div class="provider-container flex">
+          <div>
+            <% if (providers && providers.flatrate) { %>
+              <h6>Stream: </h6>
+              <% providers.flatrate.forEach(provider => { %>
+              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+              <% }) %>
+              <%}%>
+          </div>
+          <div>
+            <% if (providers && providers.rent) { %>
+              <h6>Rent: </h6>
+              <% providers.rent.forEach(provider => { %>
+              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+              <% }) %>
+              <%}%>
+          </div>
+          <div>
+            <% if (providers && providers.buy) { %>
+              <h6>Buy: </h6>
+              <% providers.buy.forEach(provider => { %>
+              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+              <% }) %>
+              <%}%>
+          </div>
+        </div>
+        </div>
+        <h5 class="fs-500">Synopsis:</h5>
+        <p class="details-synopsis"><%= results.overview %></p>
+            </div>
+  </main>

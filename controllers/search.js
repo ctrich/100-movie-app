@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { BASE_URL, MULTI_SEARCH } = require("../config/URL");
+const { BASE_URL, MULTI_SEARCH, IMAGE_URL } = require("../config/URL");
 require("dotenv").config({ path: "../config/.env" });
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
             },
         }).then(results => {    
             console.log(results.data);
-            res.render("searchResults.ejs", { results: results.data })
+            res.render("searchResults.ejs", { results: results.data.results.filter(x => x.media_type !== "person"), imageURL: IMAGE_URL })
         }).catch(err => console.error(err))
     }
 };
