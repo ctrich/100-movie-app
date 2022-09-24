@@ -29,8 +29,8 @@ const OpenCloseSignInModal = (e) => {
       modalContainer.setAttribute("data-visible", true);
       break;
       case 'modal-close':
-        for (let i = 0; i < modalContainer.children.length; i++) {
-            if (modalContainer.children[i].hasAttribute("data-visible")) {
+      for (let i = 0; i < modalContainer.children.length; i++) {
+        if (modalContainer.children[i].hasAttribute("data-visible")) {
             modalContainer.children[i].setAttribute("data-visible", false);
             }
         }
