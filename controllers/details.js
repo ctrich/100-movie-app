@@ -8,7 +8,7 @@ module.exports = {
             params: {
                 api_key: process.env.TMDB_API_KEY,
         },
-      }
+      });
         const movieSearch = axios.get(BASE_URL + MOVIE_SEARCH + req.params.id + '?', {
             params: {
                 api_key: process.env.TMDB_API_KEY,
@@ -39,7 +39,7 @@ module.exports = {
 
   getTv: (req, res) => {
     console.log(req.params.id);
-    axios
+    axios.get(BASE_URL + TV_SEARCH, {
             params: {
                 api_key: process.env.TMDB_API_KEY,
             },
