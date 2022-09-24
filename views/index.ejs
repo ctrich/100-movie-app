@@ -26,7 +26,7 @@
           <% loading=i> 3 ? 'lazy' : ''; %>
           <div class="slide-card relative text-white">
             <img class="slide-backdrop" loading="<%= `${loading}` %>" srcset="<%= `${imageURL}w780${nowPlaying[i].backdrop_path} 780w,
-                ${imageURL}w1280${nowPlaying[i].backdrop_path} 1280w` %>" width="1280px" height="720px" alt="" />
+                ${imageURL}w1280${nowPlaying[i].backdrop_path} 1280w` %>" width="1280px" height="720px" alt="<%=nowPlaying[i].title %>" />
             <h3 class="movie-title fs-500">
               <%= nowPlaying[i].title %>
             </h3>

@@ -23,16 +23,17 @@ const OpenCloseSignInModal = (e) => {
   const mainModal =  document.getElementById('modal-main');
   const createModal = document.getElementById('modal-create');
 
+
   switch(e.target.id) {
     case 'sign-in':
       modalContainer.setAttribute("data-visible", true);
       break;
       case 'modal-close':
-        modalContainer.childNodes.forEach((element, i) =>{
-                if ((i % 2) !== 0 && element.hasAttribute("data-visible")){
-                  element.setAttribute("data-visible", false);
-                }
-              })
+        for (let i = 0; i < modalContainer.children.length; i++) {
+            if (modalContainer.children[i].hasAttribute("data-visible")) {
+            modalContainer.children[i].setAttribute("data-visible", false);
+            }
+        }
         mainModal.setAttribute("data-visible", true);
         modalContainer.setAttribute("data-visible", false);
       break;
