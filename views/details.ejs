@@ -21,12 +21,10 @@
       <div class="main-details--container flex">
 
         <div class="main-details-text">
-          <img src="<%= `${imageURL}w342${results.poster_path}` %>">
+          <img class="details-poster" src="<%= `${imageURL}w342${results.poster_path}` %>">
           <div class="meta-container">
             <div>
               <h3 class="media-title fs-500"><%= results.name || results.title %></h3>
-              <h6>Type:</h6>
-              <p><%= results.media_type %></p>
               <div>
                 <h6>Genres:</h6>
                 <% results.genres.forEach((genre, i) => { %>
@@ -35,7 +33,7 @@
                 <%} else {%>
                 <span><%= genre.name %></span>
                 <%}%>
-            <%})%>
+                <%})%>
               </div>
               <h6>Runtime: </h6>
               <p><%= results.runtime || results.episode_run_time %></p>
@@ -48,7 +46,7 @@
                 <%} else {%>
                 <span><%= creator.name %></span>
                 <%}%>
-              <%})%>
+                <%})%>
               </div>
               <%} else { %>
               <h6>Director:</h6>
@@ -69,7 +67,7 @@
           </div>
           <div>
             <% if (providers && providers.rent) { %>
-              <h6>Rent: </h6>
+              <h6>Rent:</h6>
               <% providers.rent.forEach(provider => { %>
               <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
               <% }) %>
@@ -84,8 +82,13 @@
               <%}%>
           </div>
         </div>
-        </div>
+      </div>
+      <div class="details-synopsis">
         <h5 class="fs-500">Synopsis:</h5>
-        <p class="details-synopsis"><%= results.overview %></p>
-            </div>
+        <p class="details-synopsis--text"><%= results.overview %></p>
+      </div>
+    </div>
   </main>
+  <section class="trailers bg-medium">
+    <%- include('partials/trailerScroller.ejs', {movies: [results]}) %>
+  </section>

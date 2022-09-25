@@ -1192,6 +1192,10 @@ body {
  / Details page /
  //////////////*/
 
+ h6 {
+  font-weight: bold;
+ }
+
  .main-details {
   width: 100%;
   background-repeat: none;
@@ -1205,12 +1209,15 @@ body {
 
  .main-details--container {
   justify-content: space-around;
+  display: flex;
+  flex-direction: column;
  }
 
  .main-details-text {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
+  gap: 1rem;
+  padding-inline: .5rem;
+  justify-content: space-around;
   line-height: 1.5;
  }
 
@@ -1222,12 +1229,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 13rem;
  }
 
  .details-synopsis {
+  padding-inline: .5rem;
+ }
+
+ .details-synopsis--text {
   margin-top: .5rem;
-  max-width: 50%;
   line-height: 1.5;
  }
 
@@ -1235,11 +1244,17 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  --gap: 2.5rem;
+  --gap: 1rem;
+  padding-inline: .5rem;
  }
 
  .provider-image {
   width: 3rem;
+ }
+
+ .details-poster {
+  height: 20rem;
+  padding-top: 1.5rem;
  }
 
  

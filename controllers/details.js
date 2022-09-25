@@ -19,16 +19,22 @@ module.exports = {
                 api_key: process.env.TMDB_API_KEY,
             },
         });
+        const trailers = axios.get(BASE_URL + "movie/" + req.params.id + "/videos?", {
+            params: {
+                api_key: process.env.TMDB_API_KEY,
+            },
+        })
 
         axios
-            .all([movieSearch, credits, providers])
+            .all([movieSearch, credits, providers, trailers])
             .then(
         axios.spread((...results) => {
-                    console.log(results[2].data.results.US)
+                    console.log(results[0].data)
                     res.render("details.ejs",{
                         results: results[0].data,
                         credits: results[1].data.crew.filter(crew => crew.job === "Director"),
                         providers: results[2].data.results.US,
+                        trailers: results[3].data,
             imageURL: IMAGE_URL,
           });
                 })
