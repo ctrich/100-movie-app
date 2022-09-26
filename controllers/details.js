@@ -29,12 +29,11 @@ module.exports = {
             .all([movieSearch, credits, providers, trailers])
             .then(
         axios.spread((...results) => {
-                    console.log(results[0].data)
                     res.render("details.ejs",{
                         results: results[0].data,
                         credits: results[1].data.crew.filter(crew => crew.job === "Director"),
                         providers: results[2].data.results.US,
-                        trailers: results[3].data,
+                        trailers: results[3].data.results.filter(x => x.official),
             imageURL: IMAGE_URL,
           });
                 })

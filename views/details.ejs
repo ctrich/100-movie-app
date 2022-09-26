@@ -90,5 +90,6 @@
     </div>
   </main>
   <section class="trailers bg-medium">
-    <%- include('partials/trailerScroller.ejs', {movies: [results]}) %>
+    <h3 class="section-title">Trailers</h3>
+    <%- include('partials/trailerScroller.ejs', {movies: Array(trailers.length).fill(results), trailers: trailers}) %>
   </section>

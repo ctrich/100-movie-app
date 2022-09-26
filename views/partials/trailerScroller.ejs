@@ -1,5 +1,5 @@
 <div class="scroller-container text-white flex">
-  <% movies.forEach(movie => { %>
+  <% movies.forEach((movie, i) => { %>
   <div class="trailer-card relative">
     <img loading="lazy" class="trailer-backdrop" srcset="<%= `${imageURL}w300${movie.backdrop_path} 300w,
               ${imageURL}w780${movie.backdrop_path} 780w` %>" height="439" width="780" alt="" />
@@ -11,3 +11,14 @@
   </div>
   <% }) %>
 </div>
+
+<!-- 
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/kmJLuwP3MbY" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe> -->
