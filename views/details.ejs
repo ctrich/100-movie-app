@@ -86,10 +86,20 @@
       <div class="details-synopsis">
         <h5 class="fs-500">Synopsis:</h5>
         <p class="details-synopsis--text"><%= results.overview %></p>
-      </div>
-    </div>
+            </div>
+          </div>
   </main>
-  <section class="trailers bg-medium">
+  <section class="details-trailers flex">
     <h3 class="section-title">Trailers</h3>
-    <%- include('partials/trailerScroller.ejs', {movies: Array(trailers.length).fill(results), trailers: trailers}) %>
+    <% trailers.forEach(trailer => { %>
+      <iframe 
+        loading="lazy" 
+        src="https://www.youtube.com/embed/<%= trailer.key %>&autoplay=1"
+        srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/<%= trailer.key%>?autoplay=1><img src=https://img.youtube.com/vi/<%= trailer.key%>/hqdefault.jpg alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'><span>▶</span></a>"
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    <%})%>
   </section>
