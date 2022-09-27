@@ -26,7 +26,7 @@
   /* --ff-sans-normal: "Barlow", sans-serif;  */
 }
 
-/* @media (min-width: 40em) {
+/* @media (min-width: 45em) {
   :root {
     --fs-800: 5rem;
     --fs-700: 2.5rem;
@@ -37,7 +37,7 @@
   }
 } */
 
-@media (min-width: 40em) {
+@media (min-width: 45em) {
   :root {
     /* font-sizes */
     --fs-800: 6.25rem;
@@ -739,7 +739,7 @@ body {
 }
 
 .primary-navigation {
-  font-size: var(--fs-300);
+  font-size: var(--fs-400);
   list-style-type: none;
   margin-bottom: 1rem;
   align-items: flex-start;
@@ -781,7 +781,7 @@ body {
   cursor: pointer;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 45em) {
   .primary-navigation {
     --gap: clamp(1rem, 6vw, 3rem);
     padding-inline: 1.5rem;
@@ -795,7 +795,7 @@ body {
   }
 }
 
-@media (min-width: 40em) and (max-width: 55em) {
+@media (min-width: 45em) and (max-width: 60em) {
   .primary-header {
     --gap: 0;
     flex-wrap: wrap;
@@ -823,7 +823,7 @@ body {
   }
 }
 
-@media (min-width: 55em) {
+@media (min-width: 60em) {
   .primary-header {
     margin-bottom: 2rem;
     margin-top: 1rem;
@@ -850,7 +850,7 @@ body {
   display: none;
 }
 
-@media (max-width: 39.999em) {
+@media (max-width: 44.999em) {
   .primary-header {
     flex-direction: column;
   }
@@ -925,7 +925,7 @@ body {
   margin-bottom: 1rem;
 }
 
-@media (min-width: 55em) {
+@media (min-width: 60em) {
   .content-container {
     display: grid;
     column-gap: 30px;
@@ -1035,7 +1035,7 @@ body {
   color: hsl(var(--clr-white));
 }
 
-@media (min-width: 40em) {
+@media (min-width: 45em) {
   .movie-title {
     top: 45%;
   }
@@ -1103,7 +1103,7 @@ body {
   border-radius: 10px;
  }
 
- @media (min-width: 55em) {
+ @media (min-width: 60em) {
 
   .media-poster {
     width: 13rem;
@@ -1154,7 +1154,7 @@ body {
   --gap: 1.5rem;
  }
 
- @media (max-width: 39em) {
+ @media (max-width: 44em) {
   .results-container .media-poster {
     width: 7rem;
   }
@@ -1274,7 +1274,7 @@ body {
   margin: auto;
  }
 
- @media (min-width: 40em) {
+ @media (min-width: 45em) {
   .details-poster {
     height: 30rem;
   }
@@ -1284,7 +1284,7 @@ body {
   }
  }
 
- @media (min-width: 55em) {
+ @media (min-width: 60em) {
   .main-details--container {
     flex-direction: row;
   }
@@ -1306,7 +1306,7 @@ body {
   align-items: center;
   flex-wrap: wrap;
   border-top: thin solid hsla(184, 98%, 53%, .3);
-  background-color: #3e4858;
+  /* background-color: #3e4858; */
  }
 
  .footer-logo {
@@ -1321,7 +1321,7 @@ body {
   width: 2rem;
  }
 
- @media (min-width: 40em) {
+ @media (min-width: 45em) {
   footer {
     flex-direction: row;
   }
