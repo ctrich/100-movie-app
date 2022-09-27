@@ -1298,11 +1298,15 @@ body {
  /* footer */
 
  footer {
+  flex-direction: column;
+  --gap: 2rem;
+  margin-top: 2rem;
   padding: 4rem;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   border-top: thin solid hsla(184, 98%, 53%, .3);
+  background-color: #3e4858;
  }
 
  .footer-logo {
@@ -1311,6 +1315,16 @@ body {
 
  .attribution {
   width: 5rem;
+ }
+
+ .footer-link {
+  width: 2rem;
+ }
+
+ @media (min-width: 40em) {
+  footer {
+    flex-direction: row;
+  }
  }
 
  
