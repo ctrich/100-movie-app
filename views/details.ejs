@@ -35,24 +35,32 @@
                 <%}%>
                 <%})%>
               </div>
-              <h6>Runtime: </h6>
-              <p><%= results.runtime || results.episode_run_time %></p>
+              <div>
+                <h6>Release Date:</h6>
+                <p><%= results.release_date || results.first_air_date %></p>
+              </div>
+              <div>
+                <h6>Runtime: </h6>
+                <p><%= results.runtime || results.episode_run_time[0] %> min.</p>
+              </div>
               <%if (results.created_by) {%>
               <div>
                 <h6>Created By:</h6>
                 <% results.created_by.forEach((creator, i) => { %>
                 <% if (i < results.created_by.length -1) { %>
-                <span><%= creator.name + " , " %></span>
+                <span><%= creator.name + ", " %></span>
                 <%} else {%>
                 <span><%= creator.name %></span>
                 <%}%>
                 <%})%>
               </div>
-              <%} else { %>
-              <h6>Director:</h6>
-              <span><%= credits[0] ? credits[0].name : ''%></span>
+              <%} else {%>
+              <div>
+                <h6>Director:</h6>
+                <span><%= credits[0] ? credits[0].name : ''%></span>
+              </div>
               <%}%>
-            </div>
+              </div>
           </div>
           
         </div>
@@ -86,25 +94,30 @@
       <div class="details-synopsis">
         <h5 class="fs-500">Synopsis:</h5>
         <p class="details-synopsis--text"><%= results.overview %></p>
-            </div>
-          </div>
+      </div>
+    </div>
   </main>
-  <section class="details-trailers flex">
-    <h3 class="section-title">Trailers</h3>
-    <% trailers.forEach(trailer => { %>
-      <iframe 
-        loading="lazy" 
-        src="https://www.youtube.com/embed/<%= trailer.key %>&autoplay=1"
-        srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;
-          bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
-        </style><a href=https://www.youtube.com/embed/<%= trailer.key%>?autoplay=1><img src=https://img.youtube.com/vi/<%= trailer.key%>/hqdefault.jpg 
-          alt='<%= trailer.name %>'><span>▶</span></a>"
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    <%})%>
+  <section>
+    <% if (trailers.length > 0) {%>
+      <h3 class="section-title">Trailers</h3>
+      <div class="details-trailers flex">
+        <% trailers.forEach(trailer => { %>
+          <iframe 
+            loading="lazy" 
+            src="https://www.youtube.com/embed/<%= trailer.key %>&autoplay=1"
+            srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;
+              bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}
+            </style><a href=https://www.youtube.com/embed/<%= trailer.key%>?autoplay=1><img src=https://img.youtube.com/vi/<%= trailer.key%>/hqdefault.jpg 
+              alt='<%= trailer.name %>'><span>▶</span></a>"
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        <%})%>
+      </div>
+    <%}%>
+    
   </section>
   <section>
     <h3 class="section-title">Similar</h3>

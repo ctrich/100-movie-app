@@ -1236,7 +1236,7 @@ body {
  }
 
  .details-synopsis {
-  padding-inline: .5rem;
+  padding: .5rem;
  }
 
  .details-synopsis--text {
@@ -1273,5 +1273,25 @@ body {
   margin: auto;
  }
 
+ @media (min-width: 40em) {
+  .details-poster {
+    height: 30rem;
+  }
+
+  .main-details-text {
+    justify-content: center;
+  }
+ }
+
+ @media (min-width: 55em) {
+  .main-details--container {
+    flex-direction: row;
+  }
+
+  .details-synopsis {
+    padding-left: 5rem;
+    width: 75%;
+  }
+ }
 
  
