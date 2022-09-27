@@ -19,7 +19,6 @@
   <main class="main-details" style="background-image: url(' <%= `${imageURL}w1280${results.backdrop_path}` %>');">
     <div class="main-details--background">
       <div class="main-details--container flex">
-
         <div class="main-details-text">
           <img class="details-poster" src="<%= `${imageURL}w342${results.poster_path}` %>">
           <div class="meta-container">
@@ -69,7 +68,7 @@
             <% if (providers && providers.flatrate) { %>
               <h6>Stream: </h6>
               <% providers.flatrate.forEach(provider => { %>
-              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+              <a href="<%= providers.link %>" target="_blank"><img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>"></a>
               <% }) %>
               <%}%>
           </div>
@@ -77,7 +76,7 @@
             <% if (providers && providers.rent) { %>
               <h6>Rent:</h6>
               <% providers.rent.forEach(provider => { %>
-              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+                <a href="<%= providers.link %>" target="_blank"><img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>"></a>
               <% }) %>
               <%}%>
           </div>
@@ -85,7 +84,7 @@
             <% if (providers && providers.buy) { %>
               <h6>Buy: </h6>
               <% providers.buy.forEach(provider => { %>
-              <img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>">
+                <a href="<%= providers.link %>" target="_blank"><img class="provider-image" src="<%= `${imageURL}original${provider.logo_path}` %>" alt="<%= provider.provider_name %>"></a>
               <% }) %>
               <%}%>
           </div>
@@ -117,9 +116,9 @@
         <%})%>
       </div>
     <%}%>
-    
   </section>
   <section>
     <h3 class="section-title">Similar</h3>
     <%- include('partials/scroller.ejs', {media: similar}); %>
   </section>
+  <%- include('partials/footer.ejs'); %>

@@ -35,7 +35,7 @@
                 <%= nowPlaying[i].overview %>
               </p>
             </div>
-            <button class="more-info fs-300">More</button>
+            <a href="/details/movie/<%= nowPlaying[i].id %>"><button class="more-info fs-300">More</button></a>
           </div>
           <% } %>
         </div>
@@ -66,6 +66,4 @@
       <%- include('partials/scroller.ejs', { media: topRated }); %>
     </section>
   </div>
-</body>
-
-</html>
+<%- include('partials/footer.ejs'); %>

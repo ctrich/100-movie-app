@@ -1028,6 +1028,7 @@ body {
   left: 3%;
   width: 5rem;
   height: 1.8rem;
+  cursor: pointer;
   border: 0;
   border-radius: 5px;
   background-color: #E10856;
@@ -1292,6 +1293,24 @@ body {
     padding-left: 5rem;
     width: 75%;
   }
+ }
+
+ /* footer */
+
+ footer {
+  padding: 4rem;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  border-top: thin solid hsla(184, 98%, 53%, .3);
+ }
+
+ .footer-logo {
+  height: 2rem;
+ }
+
+ .attribution {
+  width: 5rem;
  }
 
  
