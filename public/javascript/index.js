@@ -5,6 +5,9 @@ const signInNav = document.querySelector('.sign-in-nav');
 const modalContainer = document.querySelector('.modal-container');
 const signInClose = document.querySelector('.sign-in-close');
 
+//nav sub-menu
+const movieNav = document.querySelector('#movie');
+
 
 //Toggle the navigation for mobile devices
 navToggle.addEventListener("click", () => {
@@ -50,9 +53,17 @@ const OpenCloseSignInModal = (e) => {
       mainModal.setAttribute("data-visible", false);
       break;
   }
-
-  
 }
 
 modalContainer.addEventListener('click', OpenCloseSignInModal);
 signInNav.addEventListener('click', OpenCloseSignInModal);
+
+movieNav.addEventListener('mouseover', ()=> {
+  const movieSubMenu = document.querySelector('.movie-sub');
+  movieSubMenu.setAttribute("data-visible", true);
+});
+
+movieNav.addEventListener('mouseleave', ()=> {
+  const movieSubMenu = document.querySelector('.movie-sub');
+  movieSubMenu.setAttribute("data-visible", false);
+});
