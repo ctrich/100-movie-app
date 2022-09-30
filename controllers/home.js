@@ -5,7 +5,7 @@ const {
   UPCOMING_MOVIES,
   IMAGE_URL,
   TOP_RATED,
-  POPULAR_TV,
+  TV_POPULAR,
 } = require("../config/URL");
 require("dotenv").config({ path: "../config/.env" });
 
@@ -23,7 +23,7 @@ module.exports = {
         api_key: api_key,
       },
     });
-    const getPopularTv = axios.get(BASE_URL + POPULAR_TV, {
+    const getPopularTv = axios.get(BASE_URL + TV_POPULAR, {
       params: {
         api_key: api_key,
       },

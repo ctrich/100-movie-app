@@ -7,6 +7,7 @@ const signInClose = document.querySelector('.sign-in-close');
 
 //nav sub-menu
 const movieNav = document.querySelector('#movie');
+const tvNav = document.querySelector('#tv');
 
 
 //Toggle the navigation for mobile devices
@@ -21,7 +22,7 @@ navToggle.addEventListener("click", () => {
     navToggle.setAttribute("aria-expanded", false);
   }
 });
-
+//login modal
 const OpenCloseSignInModal = (e) => {
   const mainModal =  document.getElementById('modal-main');
   const createModal = document.getElementById('modal-create');
@@ -55,15 +56,28 @@ const OpenCloseSignInModal = (e) => {
   }
 }
 
+//nav sub-menu
+const showSubMenu = (e) => {
+  if (e.target.id === "movie") {
+    document.querySelector(".movie-sub").setAttribute("data-visible", true);
+  } else if (e.target.id === "tv") {
+    document.querySelector(".tv-sub").setAttribute("data-visible", true);
+  }
+}
+
+const hideSubMenu = (e) => {
+  if (e.target.id === "movie") {
+    document.querySelector(".movie-sub").setAttribute("data-visible", false);
+  } else if (e.target.id === "tv") {
+    document.querySelector(".tv-sub").setAttribute("data-visible", false);
+  }
+}
+
 modalContainer.addEventListener('click', OpenCloseSignInModal);
 signInNav.addEventListener('click', OpenCloseSignInModal);
 
-movieNav.addEventListener('mouseover', ()=> {
-  const movieSubMenu = document.querySelector('.movie-sub');
-  movieSubMenu.setAttribute("data-visible", true);
-});
+movieNav.addEventListener('mouseover', showSubMenu);
+tvNav.addEventListener('mouseover', showSubMenu);
 
-movieNav.addEventListener('mouseleave', ()=> {
-  const movieSubMenu = document.querySelector('.movie-sub');
-  movieSubMenu.setAttribute("data-visible", false);
-});
+movieNav.addEventListener('mouseleave', hideSubMenu);
+tvNav.addEventListener('mouseleave', hideSubMenu);

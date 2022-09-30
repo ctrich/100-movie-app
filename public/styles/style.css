@@ -774,6 +774,22 @@ body {
   height: 10rem;
 }
 
+.tv-sub[data-visible="false"] {
+  display: none;
+}
+
+.tv-sub[data-visible="true"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  padding-left: .5rem;
+  z-index: 10000;
+  background-color: #505D72;
+  width: 7rem;
+  height: 10rem;
+}
+
 .search-bar-container {
   width: 30rem;
   margin-bottom: 2rem;

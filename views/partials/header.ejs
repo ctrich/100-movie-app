@@ -14,7 +14,7 @@
     <nav>
       <ul id="primary-navigation" data-visible="false" class="primary-navigation flex text-white fs-200 ff-sans-cond">
         <li><a href="/">Home</a></li>
-        <li id="movie"><a href="#">Movies</a>
+        <li id="movie">Movies
           <ul class="movie-sub" data-visible="false">
             <a href="/movies/popular"><li>Popular</li></a>
             <a href="/movies/upcoming"><li>Upcoming</li></a>
@@ -22,7 +22,14 @@
             <a href="/movies/topRated"><li>Top Rated</li></a>
           </ul>
         </li>
-        <li class="no-wrap"><a href="#">TV Shows</a></li>
+        <li id="tv"class="no-wrap">TV Shows
+          <ul class="tv-sub" data-visible="false">
+            <a href="/tv/popular"><li>Popular</li></a>
+            <a href="/tv/onAir"><li>On Air</li></a>
+            <a href="/tv/topRated"><li>Top Rated</li></a>
+            <a href="/tv/airingToday"><li>Airing Today</li></a>
+          </ul>
+        </li>
         <li><a href="#">Watchlist</a></li>
         <% if (loggedIn) {%>
         <li class="sign-in-nav no-wrap"><a id="sign-out" href="/logout">Sign Out</a></li>
