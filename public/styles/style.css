@@ -765,13 +765,11 @@ body {
 .movie-sub[data-visible="true"] {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   position: absolute;
-  padding-left: .5rem;
   z-index: 10000;
   background-color: #505D72;
   width: 7rem;
-  height: 10rem;
+  height: auto;
 }
 
 .tv-sub[data-visible="false"] {
@@ -781,13 +779,22 @@ body {
 .tv-sub[data-visible="true"] {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   position: absolute;
-  padding-left: .5rem;
   z-index: 10000;
   background-color: #505D72;
   width: 7rem;
-  height: 10rem;
+  height: auto;
+}
+
+.sub-menu--item {
+  height: 3rem;
+  line-height: 3rem;
+  padding-left: .5rem;
+}
+
+.sub-menu--item:hover,
+.sub-menu--item:focus {
+  background-color: #374151;
 }
 
 .search-bar-container {
