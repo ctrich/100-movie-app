@@ -12,6 +12,7 @@ const searchRoutes = require("./routes/search");
 const infoRoutes = require("./routes/details");
 const moviesRoutes = require("./routes/movies");
 const tvRoutes = require("./routes/tv");
+const watchlistRoutes = require("./routes/watchlist");
 
 require("dotenv").config({ path: "./config/.env" });
 
@@ -47,6 +48,7 @@ app.use("/search", searchRoutes);
 app.use("/details", infoRoutes);
 app.use("/movies", moviesRoutes);
 app.use("/tv", tvRoutes);
+app.use("/watchlist", watchlistRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

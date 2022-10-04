@@ -34,7 +34,6 @@ module.exports = {
             .all([movieSearch, credits, providers, trailers, similar])
             .then(
         axios.spread((...results) => {
-            console.log(results[2].data.results.US)
                     res.render("details.ejs",{
                         results: results[0].data,
                         credits: results[1].data.crew.filter(crew => crew.job === "Director"),
@@ -80,7 +79,6 @@ module.exports = {
             .all([tvSearch, credits, providers, trailers, similar])
             .then(
         axios.spread((...results) => {
-            console.log(results[2].data.results.US)
                 res.render("details.ejs",{
                     results: results[0].data,
                     credits: results[1].data.crew.filter(crew => crew.job === "Director"),
