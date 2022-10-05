@@ -62,7 +62,7 @@ const OpenCloseSignInModal = (e) => {
 
 //add media to watchlist
 const addToWatchlist = async (e) => {
-
+  e.preventDefault()
   const target = e.target.parentElement.parentElement;
   const id = target.children[0].getAttribute('href').split('/')[3];
   const type = target.children[0].getAttribute('href').split('/')[2];

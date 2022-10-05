@@ -1132,7 +1132,19 @@ body {
 
  .media-card {
   padding: .5rem 0 2rem;
+  position: relative;
 }
+
+ .watchlist {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 15%;
+ }
+
+ .watchlist-image {
+  width: 100%;
+ }
 
  .media-poster {
   width: 10rem;
