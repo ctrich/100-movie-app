@@ -67,13 +67,13 @@ const addToWatchlist = async (e) => {
   const id = target.children[0].getAttribute('href').split('/')[3];
   const type = target.children[0].getAttribute('href').split('/')[2];
   const image = target.children[0].children[0].getAttribute('srcset').split('/')[6].split(' ')[0];
-  console.log(image)
   const title = target.children[2].innerHTML;
   try {
-    const response = await fetch('/watchlist/add', {
+    await fetch('/watchlist/add', {
       method: 'PUT',
+      credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         id: id,
@@ -82,13 +82,9 @@ const addToWatchlist = async (e) => {
         image: image,
       })
     })
-    const data = response.json();
-    console.log("index.js", data);
-    location.reload();
     }catch(err) {
     console.log(err);
   }
-    
 }
 
 //nav sub-menu
