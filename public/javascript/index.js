@@ -71,7 +71,7 @@ const addToWatchlist = async (e) => {
   const title = target.children[2].innerHTML;
   try {
     const response = await fetch('/watchlist/add', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },

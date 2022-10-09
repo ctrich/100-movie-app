@@ -1,8 +1,9 @@
 //const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth2').Strategy
-const mongoose = require('mongoose')
-const User = require('../models/User')
-require('dotenv').config({path: '/.env'})
+const mongoose = require('mongoose');
+const User = require('../models/User');
+const Watchlist = require('../models/Watchlist');
+require('dotenv').config({path: '/.env'});
 
 
 module.exports = function (passport) {
