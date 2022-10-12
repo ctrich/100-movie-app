@@ -16,7 +16,7 @@ module.exports = {
       }
     },
 
-    add: async (req, res) => {
+    updateList: async (req, res) => {
         try {
             await Watchlist.findOneAndUpdate({ user: req.user.id, title: 'watchlist'}, {
               $push: {media: {

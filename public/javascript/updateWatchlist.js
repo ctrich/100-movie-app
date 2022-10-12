@@ -9,7 +9,7 @@ const addToWatchlist = async (e) => {
     const type = document.querySelector('.media-type').getAttribute('data-type');
     
     try {
-      await fetch('/watchlist/add', {
+      await fetch('/watchlist/update', {
         method: 'PUT',
         credentials: 'same-origin',
         headers: {

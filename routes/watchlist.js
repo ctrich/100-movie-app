@@ -4,7 +4,7 @@ const { ensureAuth } = require("../middleware/auth");
 const watchlistController = require("../controllers/watchlist.js");
 
 router.get("/", ensureAuth, watchlistController.getList);
-router.put("/add", ensureAuth, watchlistController.add);
+router.put("/update", ensureAuth, watchlistController.updateList);
 
 
 module.exports = router;
