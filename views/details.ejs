@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/style.css" />
   <script src="/javascript/index.js" defer></script>
+  <script src="/javascript/addToWatchlist.js" defer></script>
 </head>
 
 <body class="container bg-dark ff-sans-cond text-white">
@@ -22,7 +23,11 @@
         <div class="main-details-text">
           <img class="details-poster" src="<%= `${imageURL}w342${results.poster_path}` %>">
           <div class="meta-container">
-            <div>
+            <div></div>
+            <a class="watchlist" href="#"><img class="watchlist-image" src="/images/addSmall.png" alt="Add to watchlist"></a>
+            <div class="media-id" data-id="<%= results.id %>"></div>
+            <div class="media-type" data-type="<%= type %>"></div>
+            <div> 
               <h3 class="media-title fs-500"><%= results.name || results.title %></h3>
               <div>
                 <h6>Genres:</h6>
@@ -98,7 +103,7 @@
   </main>
   <section>
     <% if (trailers.length > 0) {%>
-      <h3 class="section-title">Trailers</h3>
+      <!-- <h3 class="section-title">Trailers</h3> -->
       <div class="details-trailers flex">
         <% trailers.forEach(trailer => { %>
           <iframe 
@@ -121,4 +126,15 @@
     <h3 class="section-title">Recommended</h3>
     <%- include('partials/scroller.ejs', {media: similar}); %>
   </section>
+  <% console.log(results) %>
   <%- include('partials/footer.ejs'); %>
+  <!-- <script id="media-vars">
+    var id = '<%= results.id %>'
+    var title = '<%= results.title %>'
+    if ('<%= results.name%>'.length !== 0) {
+      var type ='tv'
+    } else {
+      var type = 'movie'
+    }
+    var image = '<%= results.poster_path %>'
+  </script> -->

@@ -5,9 +5,6 @@ const nav = document.querySelector(".primary-navigation");
 const signInNav = document.querySelector('.sign-in-nav');
 const modalContainer = document.querySelector('.modal-container');
 const signInClose = document.querySelector('.sign-in-close');
-// add to watchlist
-const watchlist = document.querySelectorAll('.watchlist');
-
 
 //nav sub-menu
 const movieNav = document.querySelector('#movie');
@@ -60,33 +57,6 @@ const OpenCloseSignInModal = (e) => {
   }
 }
 
-//add media to watchlist
-const addToWatchlist = async (e) => {
-  e.preventDefault()
-  const target = e.target.parentElement.parentElement;
-  const id = target.children[0].getAttribute('href').split('/')[3];
-  const type = target.children[0].getAttribute('href').split('/')[2];
-  const image = target.children[0].children[0].getAttribute('srcset').split('/')[6].split(' ')[0];
-  const title = target.children[2].innerHTML;
-  try {
-    await fetch('/watchlist/add', {
-      method: 'PUT',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        id: id,
-        title: title,
-        type: type,
-        image: image,
-      })
-    })
-    }catch(err) {
-    console.log(err);
-  }
-}
-
 //nav sub-menu
 const showSubMenu = (e) => {
   if (e.target.id === "movie") {
@@ -113,6 +83,3 @@ tvNav.addEventListener('mouseover', showSubMenu);
 movieNav.addEventListener('mouseleave', hideSubMenu);
 tvNav.addEventListener('mouseleave', hideSubMenu);
 
-watchlist.forEach(element => {
-  element.addEventListener('click', addToWatchlist);
-})

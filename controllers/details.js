@@ -4,6 +4,7 @@ require("dotenv").config({ path: "../config/.env" });
 
 module.exports = {
     getMovie: (req, res) => {
+        const type = req.url.split('/')[1];
         const credits = axios.get(BASE_URL + "movie/" + req.params.id + "/credits?",{
             params: {
                 api_key: process.env.TMDB_API_KEY,
@@ -40,6 +41,7 @@ module.exports = {
                         providers: results[2].data.results.US,
                         trailers: results[3].data.results.slice(0, 3),
                         similar: results[4].data.results,
+                        type: type,
             imageURL: IMAGE_URL,
           });
                 })
@@ -49,6 +51,7 @@ module.exports = {
     },
 
     getTv: (req, res) => {
+        const type = req.url.split('/')[1];
         const credits = axios.get(BASE_URL + "tv/" + req.params.id + "/credits?",{
             params: {
                 api_key: process.env.TMDB_API_KEY,
@@ -85,6 +88,7 @@ module.exports = {
                     providers: results[2].data.results.US,
                     trailers: results[3].data.results.slice(0, 3),
                     similar: results[4].data.results,
+                    type: type,
         imageURL: IMAGE_URL,
                 });
             })

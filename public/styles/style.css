@@ -1135,15 +1135,16 @@ body {
   position: relative;
 }
 
- .watchlist {
+ /* .watchlist {
   position: absolute;
   top: 10%;
   right: 10%;
   width: 15%;
- }
+ } */
 
  .watchlist-image {
-  width: 100%;
+  width: 2rem;
+  margin-bottom: 2rem;
  }
 
  .media-poster {
