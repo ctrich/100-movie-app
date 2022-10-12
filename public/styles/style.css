@@ -1135,18 +1135,6 @@ body {
   position: relative;
 }
 
- /* .watchlist {
-  position: absolute;
-  top: 10%;
-  right: 10%;
-  width: 15%;
- } */
-
- .watchlist-image {
-  width: 2rem;
-  margin-bottom: 2rem;
- }
-
  .media-poster {
   width: 10rem;
   height: auto;
@@ -1286,9 +1274,27 @@ body {
   flex-direction: column;
   justify-content: center;
  }
+ .watchlist-add {
+  width: 2rem;
+  fill: white;
+  line-height: 2rem;
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  cursor: pointer;
+ }
+
+ .watchlist-add.true {
+  fill:#E10856;
+ }
+
+ .watchlist-image {
+  width: 2rem;
+  margin-bottom: 2rem;
+ }
 
  .details-synopsis {
-  padding: .5rem;
+  padding: 1rem;
  }
 
  .details-synopsis--text {
@@ -1301,7 +1307,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   --gap: 1rem;
-  padding-inline: .5rem;
+  padding-inline: 1rem;
  }
 
  .provider-image {

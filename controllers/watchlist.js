@@ -1,4 +1,3 @@
-//const Media = require('../models/Media');
 const Watchlist = require('../models/Watchlist');
 const { IMAGE_URL } = require('../config/URL');
 require("dotenv").config({ path: "../config/.env" });
