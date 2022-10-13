@@ -22,11 +22,11 @@ module.exports = function (passport) {
 
       try{
         let user = await User.findOne( { email: profile.email });
-
         if (user) {
           done(null, user);
         } else {
           user = await User.create(newUser);
+          await Watchlist.create({ user: user, title: 'watchlist'});
           done(null, user);
         }
       } catch(err) {

@@ -7,8 +7,12 @@ module.exports = {
     getMovie: async (req, res) => {
         const type = req.url.split('/')[1];
         try {
-            const watchlist = await Watchlist.findOne({ user: req.user }).lean();
-            const inWatchlist = watchlist.media.some(movie => movie.id === req.params.id);
+            let inWatchlist = false
+            if (req.user) {
+                const watchlist = await Watchlist.findOne({ user: req.user, title: 'watchlist' }).lean();
+                inWatchlist = watchlist.media.some(movie => movie.id === req.params.id);
+                console.log(inWatchlist);
+            }
         
         const credits = axios.get(BASE_URL + "movie/" + req.params.id + "/credits?",{
             params: {
@@ -57,9 +61,13 @@ module.exports = {
     getTv: async (req, res) => {
         const type = req.url.split('/')[1];
         try {
-            const watchlist = await Watchlist.findOne({ user: req.user }).lean();
-            const inWatchlist = watchlist.media.some(movie => movie.id === req.params.id);
-            console.log(inWatchlist);
+            let inWatchlist = false
+            if (req.user) {
+                const watchlist = await Watchlist.findOne({ user: req.user, title: 'watchlist' }).lean();
+                inWatchlist = watchlist.media.some(movie => movie.id === req.params.id);
+                console.log(inWatchlist);
+            }
+            
         
         const credits = axios.get(BASE_URL + "tv/" + req.params.id + "/credits?",{
             params: {

@@ -21,7 +21,7 @@ const addToWatchlist = async (e) => {
           type: type,
           image: image,
         })
-      })
+      });
       watchlist.classList.toggle('true');
       watchlist.classList.toggle('false');
       }catch(err) {
@@ -30,27 +30,3 @@ const addToWatchlist = async (e) => {
 }
 
 watchlist.addEventListener('click', addToWatchlist);
-
-// (e) => {
-//   e.preventDefault();
-//   var selected_id = this.id;
-
-//   $.ajax({
-//     url: '/tv/84773-the-lord-of-the-rings-the-rings-of-power/toggle-list-item?translate=false&language=en-US',
-//     type: 'PUT',
-//     data: {
-//       type: selected_id
-//     }
-//   }).fail(function() {
-//     showError('There was a problem toggling this item.');
-//   }).done(function(response) {
-//     if (response.failure) {
-//       showError('There was a problem toggling this item.');
-//     }
-
-//     if (response.success) {
-//       $('#' + selected_id + ' span').toggleClass('true');
-//       $('#' + selected_id + ' span').find('span.text').html(response.button_text).hide(0).fadeIn("fast");
-//     }
-//   });
-// }
