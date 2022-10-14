@@ -9,6 +9,7 @@ module.exports = {
             params: {
                 api_key: process.env.TMDB_API_KEY,
                 query: req.query.query,
+                page: req.body.page || 1,
             },
         }).then(results => {    
             console.log(results.data);
