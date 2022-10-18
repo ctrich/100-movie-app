@@ -4,16 +4,22 @@ require("dotenv").config({ path: "../config/.env" });
 
 module.exports = {
     getMedia: (req, res) => {
-        console.log(req.query.query)
+        //console.log(req)
+        //console.log(req.query.query, req.query.page)
         axios.get(BASE_URL + MULTI_SEARCH, {
             params: {
                 api_key: process.env.TMDB_API_KEY,
-                query: req.query.query,
-                page: req.body.page || 1,
+                query: req.query.query || query,
+                page: req.query.page || 1,
             },
         }).then(results => {    
-            console.log(results.data);
+            //console.log(results.data);
+            res.locals.media = results.data.results;
             res.render("searchResults.ejs", { results: results.data.results.filter(x => x.media_type !== "person"), imageURL: IMAGE_URL })
+            console.log('this is before the response')
+            //res.send({ results: results.data });
+            console.log('this is after the response')
+
         }).catch(err => console.error(err))
     }
 };

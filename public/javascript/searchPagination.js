@@ -1,10 +1,10 @@
+
 let options = {
     rootMargin: '0px',
     threshold: 1.0,
 };
 
 const loadMore = async () => {
-    console.log('its working')
     const page = (function() {
         let page;
         return function() {
@@ -12,13 +12,10 @@ const loadMore = async () => {
         }
     })();
     try {
-        const response = await fetch("/search", {
-            body: JSON.stringify({
-                page: page,
-            })
-        })
+        const response = await fetch("/search?query=road&page=2")
+        console.log('This is the response', response)
     } catch(err) {
-        console.log(err);
+        console.log("im an error", err);
     }
 }
 
