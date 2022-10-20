@@ -13,7 +13,7 @@ module.exports = {
             console.log(err)
         }
       } else {
-        res.render("watchlist.ejs", {watchlist: ''});
+        res.render("watchlist.ejs", {watchlist: 'media'});
       }
     },
 

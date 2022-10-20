@@ -16,12 +16,13 @@
 
 <body class="container bg-dark ff-sans-cond">
   <% results.concat(media) %>
-  <% console.log(results, 'These are the results of results') %>
+  <% console.log(media, 'These are the results of media') %>
+
   <%- include('partials/header.ejs', { loggedIn: login }); %>
   <%- include('partials/loginModal.ejs') %>
   <main class="main-search">
     <div class="results-container flex">
-      <% results.forEach(media => { %>
+      <% results.map(media => { %>
       <div class="result-item">
         <%- include('partials/mediaCard.ejs', { media: media }); %>
         <div class="result-item--info flex">
@@ -32,5 +33,50 @@
       </div>
       <%  }); %>
     </div>
+    <form action="/search" method="GET">
+      <input name="query" type="hidden" value="road" />
+      <input name="page" type="hidden" value="2" />
+      <input type="submit">
+    </form>
   </main>
   <%- include('partials/footer.ejs'); %>
+  <script src="/javascript/ejs.js">
+    let options = {
+    rootMargin: '0px',
+    threshold: 1.0,
+};
+const resultsContainer = document.querySelector('.results-container');
+
+const loadMore = async () => {
+    const page = (function() {
+        let page;
+        return function() {
+            return page++
+        }
+    })();
+    try {
+        const response = await fetch("/search?" + new URLSearchParams({
+            query: 'road',
+            page: 2,
+        }));
+        let data = await response.json()
+        console.log(data.results.results)
+        data.results.results.map(item => {
+         let child = ejs.render('<%= mediaCard.ejs %>', {media: item})
+          
+          let movie = document.createElement('p');
+          movie.innerHTML = item.id
+          resultsContainer.appendChild(child)
+        })
+   
+        // await response.json();
+        
+        console.log('This is the response', response)
+    } catch(err) {
+        console.log("script tag", err);
+    }
+}
+
+let observer = new IntersectionObserver(loadMore, options);
+observer.observe(document.querySelector('.footer-logo'))
+  </script>
