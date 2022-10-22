@@ -15,9 +15,9 @@
 </head>
 
 <body class="container bg-dark ff-sans-cond">
-  <% results.concat(media) %>
-  <% console.log(media, 'These are the results of media') %>
-
+ 
+  <%= console.log("this is results", results[0]) %>
+ 
   <%- include('partials/header.ejs', { loggedIn: login }); %>
   <%- include('partials/loginModal.ejs') %>
   <main class="main-search">
@@ -40,7 +40,8 @@
     </form>
   </main>
   <%- include('partials/footer.ejs'); %>
-  <script src="/javascript/ejs.js">
+  <script src="/javascript/ejs.js"></script>
+  <script >
     let options = {
     rootMargin: '0px',
     threshold: 1.0,
@@ -48,30 +49,39 @@
 const resultsContainer = document.querySelector('.results-container');
 
 const loadMore = async () => {
-    const page = (function() {
-        let page;
-        return function() {
-            return page++
-        }
-    })();
+   
     try {
         const response = await fetch("/search?" + new URLSearchParams({
             query: 'road',
             page: 2,
         }));
-        let data = await response.json()
-        console.log(data.results.results)
-        data.results.results.map(item => {
-         let child = ejs.render('<%= mediaCard.ejs %>', {media: item})
-          
-          let movie = document.createElement('p');
-          movie.innerHTML = item.id
-          resultsContainer.appendChild(child)
-        })
+        let data =  await response.json();
+
+    data.results.results.map(media => {
+      let mediaType = '';
+      if (media.mediaType) {
+        mediaType = media.mediaType 
+      }else if (media.name) {
+        mediaType = 'tv';
+      } else {
+        mediaType = 'movie';
+      } 
+        const resultsItem = document.createElement('div').classList.add('result-item');
+        const mediCard = document.createElement('div').classList.add('media-card');
+        const anchor = document.createElement('a');
+        anchor.href = `/details/${mediaType}/${media.id}`
+        const mediaPoster = document.createElement('img').classList.add('media-poster');
+        const resultItemInfo = document.createElement('div').classList.add('result-item--info');
+        const title = document.createElement('h4');
+        title.classList.add('fs-500');
+        title.innerText = media.title || media.name;
+        const releaseDate = document.createElement('span');
+        const overview = document.createElement('p');
+
+        resultsContainer.appendChild(title);
+      })
    
-        // await response.json();
-        
-        console.log('This is the response', response)
+  
     } catch(err) {
         console.log("script tag", err);
     }
