@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { query } = require("express");
 const { BASE_URL, MULTI_SEARCH, IMAGE_URL } = require("../config/URL");
 require("dotenv").config({ path: "../config/.env" });
 
@@ -19,10 +20,10 @@ module.exports = {
             if(page === 1) {
                // res.locals.media = [];
                 //var media = results.data.results;
-                res.render("searchResults.ejs", { results: results.data.results.filter(x => x.media_type !== "person"), imageURL: IMAGE_URL })
+                res.render("searchResults.ejs", { results: results.data.results.filter(x => x.media_type !== "person"), query: req.query.query, imageURL: IMAGE_URL })
             } else {
                 //res.locals.media = results.data.results;
-                res.send({ results: results.data });  
+                res.send({ results: results.data.results.filter(x => x.media_type !== "person")});  
                // media.concat(results.data.results);
                 //res.render("searchResults.ejs", { results: results.data.results.filter(x => x.media_type !== "person"), imageURL: IMAGE_URL })
                 //console.log('this is after the response', media)          

@@ -33,31 +33,41 @@
       </div>
       <%  }); %>
     </div>
-    <form action="/search" method="GET">
-      <input name="query" type="hidden" value="road" />
-      <input name="page" type="hidden" value="2" />
-      <input type="submit">
-    </form>
   </main>
   <%- include('partials/footer.ejs'); %>
-  <script src="/javascript/ejs.js"></script>
   <script >
+    //options for intersection observer
+    //root - element for checking the visibility of the target. default = browser viewport
+    //rootMargin - values serve to grow or shrink each side of the root elements bounding box before computing intersections. default = 0;
+    //threshold - sets how much of the target needs to be visible for the callback to run.
     let options = {
     rootMargin: '0px',
-    threshold: 1.0,
-};
-const resultsContainer = document.querySelector('.results-container');
+    threshold: 0,
+    };
+    //container to append results
+    const resultsContainer = document.querySelector('.results-container');
 
-const loadMore = async () => {
-   
+    let page = (function () {
+        let page = 1;
+        return function () {
+        return page += 1
+        }
+      })();
+
+    //infinite scroll
+    const loadMore = async () => {
+  
+    //search query
+    let query = '<%= query %>';
     try {
         const response = await fetch("/search?" + new URLSearchParams({
-            query: 'road',
-            page: 2,
+            query: query,
+            page: page(),
         }));
         let data =  await response.json();
 
-    data.results.results.map(media => {
+    data.results.map(media => {
+      //set the media type for the href
       let mediaType = '';
       if (media.mediaType) {
         mediaType = media.mediaType 
@@ -66,19 +76,47 @@ const loadMore = async () => {
       } else {
         mediaType = 'movie';
       } 
-        const resultsItem = document.createElement('div').classList.add('result-item');
-        const mediCard = document.createElement('div').classList.add('media-card');
+      //create elements
+        const resultItem = document.createElement('div')
+        const mediaCard = document.createElement('div')
         const anchor = document.createElement('a');
-        anchor.href = `/details/${mediaType}/${media.id}`
-        const mediaPoster = document.createElement('img').classList.add('media-poster');
-        const resultItemInfo = document.createElement('div').classList.add('result-item--info');
+        const mediaPoster = document.createElement('img')
+        const resultItemInfo = document.createElement('div')
         const title = document.createElement('h4');
-        title.classList.add('fs-500');
-        title.innerText = media.title || media.name;
         const releaseDate = document.createElement('span');
         const overview = document.createElement('p');
 
-        resultsContainer.appendChild(title);
+        //add classes
+        resultItem.classList.add('result-item');
+        mediaCard.classList.add('media-card');
+        mediaPoster.classList.add('media-poster');
+        resultItemInfo.classList.add('result-item--info');
+        resultItemInfo.classList.add('flex');
+        title.classList.add('fs-500');
+
+        //add content
+        anchor.href = `/details/${mediaType}/${media.id}` ;
+        title.innerText = media.title || media.name;
+        releaseDate.innerText = media.release_date || media.first_air_date;
+        overview.innerText = media.overview;
+        
+        //add attributes
+        mediaPoster.setAttribute('loading', 'lazy');
+        mediaPoster.setAttribute('srcset', `https://image.tmdb.org/t/p/w342${media.poster_path} 342w, https://image.tmdb.org/t/p/w500${media.poster_path} 500w` )
+        mediaPoster.setAttribute('sizes', '(max-width: 500px) 342px, 500px');
+        mediaPoster.setAttribute('height', '750');
+        mediaPoster.setAttribute('width', '500');
+        mediaPoster.setAttribute('alt', media.title || media.name);
+
+        //append element
+        anchor.appendChild(mediaPoster);
+        mediaCard.appendChild(anchor);
+        resultItem.appendChild(mediaCard);
+        resultItemInfo.appendChild(title);
+        resultItemInfo.appendChild(releaseDate);
+        resultItemInfo.appendChild(overview);
+        resultItem.appendChild(resultItemInfo);
+        resultsContainer.appendChild(resultItem);
       })
    
   
@@ -86,7 +124,9 @@ const loadMore = async () => {
         console.log("script tag", err);
     }
 }
+setTimeout(() => {
+  const observer = new IntersectionObserver(loadMore, options);
+  observer.observe(document.querySelector('.footer-logo'));
+}, 2000);
 
-let observer = new IntersectionObserver(loadMore, options);
-observer.observe(document.querySelector('.footer-logo'))
   </script>
