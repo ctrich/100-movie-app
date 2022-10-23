@@ -18,7 +18,7 @@
   <%- include('partials/loginModal.ejs'); %>
   <h3 class="section-title">Watchlist</h3>
   <main class="movies-main">
-    <%if (watchlist) { %>
+    <%if (watchlist !== null) { %>
     <% watchlist.media.forEach(media => {%>
         <%- include('partials/mediaCard.ejs', { media: media }); %>
     <%})%>
