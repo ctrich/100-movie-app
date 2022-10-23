@@ -15,9 +15,9 @@
 </head>
 
 <body class="container bg-dark ff-sans-cond">
-  <% results.concat(media) %>
-  <% console.log(media, 'These are the results of media') %>
-
+ 
+  <%= console.log("this is results", results[0]) %>
+ 
   <%- include('partials/header.ejs', { loggedIn: login }); %>
   <%- include('partials/loginModal.ejs') %>
   <main class="main-search">
@@ -33,50 +33,104 @@
       </div>
       <%  }); %>
     </div>
-    <form action="/search" method="GET">
-      <input name="query" type="hidden" value="road" />
-      <input name="page" type="hidden" value="2" />
-      <input type="submit">
-    </form>
   </main>
   <%- include('partials/footer.ejs'); %>
-  <script src="/javascript/ejs.js">
+  <script >
+    //options for intersection observer
+    //root - element for checking the visibility of the target. default = browser viewport
+    //rootMargin - values serve to grow or shrink each side of the root elements bounding box before computing intersections. default = 0;
+    //threshold - sets how much of the target needs to be visible for the callback to run.
     let options = {
-    rootMargin: '0px',
-    threshold: 1.0,
-};
-const resultsContainer = document.querySelector('.results-container');
+    rootMargin: '0px 0px 10%',
+    threshold: 1,
+    };
+    //container to append results
+    const resultsContainer = document.querySelector('.results-container');
 
-const loadMore = async () => {
-    const page = (function() {
-        let page;
-        return function() {
-            return page++
+    let page = (function () {
+        let page = 1;
+        return function () {
+        return page += 1
         }
-    })();
+      })();
+
+    //infinite scroll
+    const loadMore = async () => {
+      
+    //search query
+    let query = '<%= query %>';
     try {
         const response = await fetch("/search?" + new URLSearchParams({
-            query: 'road',
-            page: 2,
+            query: query,
+            page: page(),
         }));
-        let data = await response.json()
-        console.log(data.results.results)
-        data.results.results.map(item => {
-         let child = ejs.render('<%= mediaCard.ejs %>', {media: item})
-          
-          let movie = document.createElement('p');
-          movie.innerHTML = item.id
-          resultsContainer.appendChild(child)
-        })
-   
-        // await response.json();
+        let data =  await response.json();
+
+    data.results.map(media => {
+      //set the media type for the href
+      let mediaType = '';
+      if (media.mediaType) {
+        mediaType = media.mediaType 
+      }else if (media.name) {
+        mediaType = 'tv';
+      } else {
+        mediaType = 'movie';
+      } 
+      //create elements
+        const resultItem = document.createElement('div')
+        const mediaCard = document.createElement('div')
+        const anchor = document.createElement('a');
+        const mediaPoster = document.createElement('img')
+        const resultItemInfo = document.createElement('div')
+        const title = document.createElement('h4');
+        const releaseDate = document.createElement('span');
+        const overview = document.createElement('p');
+
+        //add classes
+        resultItem.classList.add('result-item');
+        mediaCard.classList.add('media-card');
+        mediaPoster.classList.add('media-poster');
+        resultItemInfo.classList.add('result-item--info');
+        resultItemInfo.classList.add('flex');
+        title.classList.add('fs-500');
+
+        //add content
+        anchor.href = `/details/${mediaType}/${media.id}` ;
+        title.innerText = media.title || media.name;
+        releaseDate.innerText = media.release_date || media.first_air_date;
+        overview.innerText = media.overview;
         
-        console.log('This is the response', response)
+        //add attributes
+        mediaPoster.setAttribute('loading', 'lazy');
+        mediaPoster.setAttribute('srcset', `https://image.tmdb.org/t/p/w342${media.poster_path} 342w, https://image.tmdb.org/t/p/w500${media.poster_path} 500w` )
+        mediaPoster.setAttribute('sizes', '(max-width: 500px) 342px, 500px');
+        mediaPoster.setAttribute('height', '750');
+        mediaPoster.setAttribute('width', '500');
+        mediaPoster.setAttribute('alt', media.title || media.name);
+
+        //append element
+        anchor.appendChild(mediaPoster);
+        mediaCard.appendChild(anchor);
+        resultItem.appendChild(mediaCard);
+        resultItemInfo.appendChild(title);
+        resultItemInfo.appendChild(releaseDate);
+        resultItemInfo.appendChild(overview);
+        resultItem.appendChild(resultItemInfo);
+        resultsContainer.appendChild(resultItem);
+      })
+   
+  
     } catch(err) {
         console.log("script tag", err);
     }
 }
 
-let observer = new IntersectionObserver(loadMore, options);
-observer.observe(document.querySelector('.footer-logo'))
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      loadMore();
+    }
+  }, options);
+  observer.observe(document.querySelector('.footer-logo'));
+
+
   </script>
