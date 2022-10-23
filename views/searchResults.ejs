@@ -41,8 +41,8 @@
     //rootMargin - values serve to grow or shrink each side of the root elements bounding box before computing intersections. default = 0;
     //threshold - sets how much of the target needs to be visible for the callback to run.
     let options = {
-    rootMargin: '0px',
-    threshold: 0,
+    rootMargin: '0px 0px 10%',
+    threshold: 1,
     };
     //container to append results
     const resultsContainer = document.querySelector('.results-container');
@@ -56,7 +56,7 @@
 
     //infinite scroll
     const loadMore = async () => {
-  
+      
     //search query
     let query = '<%= query %>';
     try {
@@ -124,9 +124,13 @@
         console.log("script tag", err);
     }
 }
-setTimeout(() => {
-  const observer = new IntersectionObserver(loadMore, options);
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      loadMore();
+    }
+  }, options);
   observer.observe(document.querySelector('.footer-logo'));
-}, 2000);
+
 
   </script>
