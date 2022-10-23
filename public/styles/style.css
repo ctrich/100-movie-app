@@ -711,13 +711,9 @@ body {
   cursor: pointer;
 }
 
-.sign-in-button:last-child {
-  margin-top: 2.5rem;
-}
-
-.modal-create .sign-in-button:last-child {
+/* .modal-create .sign-in-button:last-child {
   margin-top: 0;
-}
+} */
 
 .sign-in-button:hover,
 .sign-in-button:focus {
