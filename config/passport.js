@@ -1,6 +1,7 @@
 //const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 const Watchlist = require('../models/Watchlist');
 require('dotenv').config({path: '/.env'});
@@ -14,7 +15,6 @@ module.exports = function (passport) {
     callbackURL: "/auth/google/callback",
   },
   async (accessToken, refreshToken, profile, done) => {
-      console.log(profile.id)
       const newUser = {
         userName: profile.email.slice(0, profile.email.indexOf('@')),
         email: profile.email,
@@ -58,15 +58,23 @@ module.exports = function (passport) {
         }catch(err) {
           console.log(err)
         }
-        // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-        //   return cb(err, user);
-        // });
       }
     ));
 
-
-
-
+    passport.use(new LocalStrategy(
+      async (email, password, done) => {
+       try{
+          await User.findOne({ email: email }, (err, user) => {
+            if (err) done(err);
+            if (!user) done(null, false);
+            if (!user.verifyPassword(password)) done(null, false);
+            return done(null, user);
+          });
+       } catch(err) {
+        console.log(err);
+       }  
+      }
+    ));
 
 
   passport.serializeUser((user, done) => {

@@ -18,4 +18,10 @@ router.get('/facebook/callback',
     res.redirect('/');
 });
 
+router.post('/login',
+  passport.authenticate('local', { failureRedirect: '/'}),
+  function(req, res) {
+    res.redirect('/');
+  });
+
 module.exports = router
