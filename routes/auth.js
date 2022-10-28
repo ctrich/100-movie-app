@@ -1,6 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 const router = express.Router()
+const authController = require('../controllers/auth');
 
 
 router.get('/google', passport.authenticate('google',{ scope:
@@ -18,10 +19,7 @@ router.get('/facebook/callback',
     res.redirect('/');
 });
 
-router.post('/login',
-  passport.authenticate('local', { failureRedirect: '/'}),
-  function(req, res) {
-    res.redirect('/');
-  });
+router.post('/login', authController.postLogin)
+router.post('/signup', authController.postSignup)
 
 module.exports = router

@@ -17,7 +17,6 @@ module.exports = {
                 region: "US",
             },
         }).then(results => {    
-            console.log(results.data);
             res.render("movies.ejs", { movies: results.data.results, imageURL: IMAGE_URL});
         }).catch(err => console.error(err))
     },
