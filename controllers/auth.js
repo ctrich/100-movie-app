@@ -56,14 +56,16 @@ exports.logout = (req, res) => {
       email: req.body.email,
       password: req.body.password
     })
-  
+    
     User.findOne({$or: [
       {email: req.body.email},
-      {userName: req.body.userName}
+      // {userName: req.body.userName}
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
+        console.log("made it here")
         req.flash('errors', { msg: 'Account with that email address or username already exists.' })
+        console.log(req.flash())
         return res.redirect('/')
       }
       user.save((err) => {
