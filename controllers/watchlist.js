@@ -8,7 +8,6 @@ module.exports = {
       if (req.user) {
         try {
             const media = await Watchlist.find({ user: req.user.id, title: 'watchlist' }).lean();
-            console.log("im in the controller", media)
             res.render("watchlist.ejs", { watchlist: media[0], imageURL: IMAGE_URL });
         }catch(err){
             console.log(err)
