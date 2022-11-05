@@ -5,6 +5,7 @@ const nav = document.querySelector(".primary-navigation");
 const signInNav = document.querySelector('.sign-in-nav');
 const modalContainer = document.querySelector('.modal-container');
 const signInClose = document.querySelector('.sign-in-close');
+const create = document.querySelector('#create');
 
 //nav sub-menu
 const movieNav = document.querySelector('#movie');
@@ -82,4 +83,40 @@ tvNav.addEventListener('mouseover', showSubMenu);
 
 movieNav.addEventListener('mouseleave', hideSubMenu);
 tvNav.addEventListener('mouseleave', hideSubMenu);
+
+create.addEventListener("click", async (e)=> {
+  e.preventDefault();
+  document.querySelectorAll('.error').forEach(error => {
+    error.remove();
+  })
+
+  const email = e.target.form.children[0].children[0].value;
+  const password = e.target.form.children[1].children[0].value;
+  const confirmPassword = e.target.form.children[2].children[0].value;
+  try{
+    const response = await fetch("/auth/signup", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      }),
+    })
+    data = await response.json()
+    console.log(data)
+    const errors = document.getElementById('errors');
+    data.forEach(error => {
+      const errorMessage = document.createElement('p');
+      errorMessage.classList.add('error');
+      errorMessage.innerText = error.msg;
+      errors.append(errorMessage);
+    })
+  }catch(err) {
+    console.log(err);
+  }
+  
+})
 

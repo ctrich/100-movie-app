@@ -46,8 +46,7 @@ exports.logout = (req, res) => {
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
     if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
     if (validationErrors.length) {
-      req.flash('errors', validationErrors)
-      return res.redirect('/')
+      return res.send(validationErrors)
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
   
@@ -59,14 +58,10 @@ exports.logout = (req, res) => {
     
     User.findOne({$or: [
       {email: req.body.email},
-      // {userName: req.body.userName}
     ]}, (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
-        console.log("made it here")
-        req.flash('errors', { msg: 'Account with that email address or username already exists.' })
-        console.log(req.flash())
-        return res.redirect('/')
+        return  res.send([{msg: 'Account with that email address already exists.'}])
       }
       user.save((err) => {
         if (err) { return next(err) }
