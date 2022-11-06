@@ -20,22 +20,20 @@ exports.logout = (req, res) => {
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
   
     if (validationErrors.length) {
-      
-      req.flash('errors', validationErrors)
-      return res.redirect('/')
+      return res.send(validationErrors);
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
   
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
-        req.flash('errors', info)
-        return res.redirect('/')
+        return res.send([{msg: "Invalid credentials"}])
       }
       req.logIn(user, (err) => {
-        if (err) { return next(err) }
-        req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/')
+        if (err) { 
+          return next(err) 
+        }
+        res.send([])
       })
     })(req, res, next)
   }
@@ -70,7 +68,7 @@ exports.logout = (req, res) => {
             return next(err)
           }
           Watchlist.create({ user: user, title: 'watchlist'});
-          res.redirect('/')
+          res.send([])
         })
       })
     })

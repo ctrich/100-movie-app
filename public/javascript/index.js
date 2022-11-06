@@ -6,6 +6,7 @@ const signInNav = document.querySelector('.sign-in-nav');
 const modalContainer = document.querySelector('.modal-container');
 const signInClose = document.querySelector('.sign-in-close');
 const create = document.querySelector('#create');
+const signInBtn = document.querySelector('#sign-in--btn');
 
 //nav sub-menu
 const movieNav = document.querySelector('#movie');
@@ -84,8 +85,10 @@ tvNav.addEventListener('mouseover', showSubMenu);
 movieNav.addEventListener('mouseleave', hideSubMenu);
 tvNav.addEventListener('mouseleave', hideSubMenu);
 
+//Create an accoutn and display errors
 create.addEventListener("click", async (e)=> {
   e.preventDefault();
+  //remove all previous errors
   document.querySelectorAll('.error').forEach(error => {
     error.remove();
   })
@@ -106,17 +109,58 @@ create.addEventListener("click", async (e)=> {
       }),
     })
     data = await response.json()
-    console.log(data)
     const errors = document.getElementById('errors');
-    data.forEach(error => {
-      const errorMessage = document.createElement('p');
-      errorMessage.classList.add('error');
-      errorMessage.innerText = error.msg;
-      errors.append(errorMessage);
-    })
+    if (data.length === 0) {
+      location.reload();
+    } else {
+      data.forEach(error => {
+        const errorMessage = document.createElement('p');
+        errorMessage.classList.add('error');
+        errorMessage.innerText = error.msg;
+        errors.append(errorMessage);
+      })
+    }
   }catch(err) {
     console.log(err);
   }
   
+})
+
+//Sign in to account and display errors
+signInBtn.addEventListener('click', async (e)=> {
+  e.preventDefault();
+  //remove all previous errors
+  document.querySelectorAll('.error').forEach(error => {
+    error.remove();
+  })
+  const email = e.target.form.children[0].children[0].value;
+  const password = e.target.form.children[1].children[0].value;
+  try{
+    const response = await fetch("/auth/login", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+    data = await response.json()
+    const errors = document.getElementById('login-errors');
+    if (data.length === 0) {
+      location.reload();
+    } else {
+      data.forEach(error => {
+        console.log("error", error)
+        const errorMessage = document.createElement('p');
+        errorMessage.classList.add('error');
+        errorMessage.innerText = error.msg;
+        errors.append(errorMessage);
+      })
+    }
+  }catch(err) {
+    console.log(err);
+  }
 })
 
