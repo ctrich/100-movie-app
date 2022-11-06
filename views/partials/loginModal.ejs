@@ -22,8 +22,9 @@
   </div>
   <!-- Modal to create an account using email and password-->
   <div id="modal-create--email" data-visible="false" class="sign-in-modal modal-create--email form">
-    <h1>Sign up with email</h1>
-    <form action="/auth/signup" method="POST">
+    <h1 id="sign-up-email">Sign up with email</h1>
+    <div id="errors" class="alert"></div>
+    <form>
       <label for="create-email">
         <input id="create-email" name="email" type="email" placeholder="email">
       </label>
@@ -33,20 +34,21 @@
       <label for="confirm-password">
         <input id="confirm-password" name="confirmPassword" type="password" placeholder="confirm password">
       </label>
-      <input class="btn-create" type="submit" value="Create">
+      <input id="create" class="btn-create" type="submit" value="Create">
     </form>
   </div>
   <!-- Modal to sign in using email and password-->
   <div id="modal-signin--email" data-visible="false" class="sign-in-modal modal-signin--email form">
-    <h1>Sign <span>In</span></h1>
-    <form action="/auth/login" method="POST">
+    <h1>Sign In</h1>
+    <div id="login-errors" class="alert"></div>
+    <form>
       <label for="email">
         <input id="email" name="email" type="email" placeholder="email">
       </label>
       <label for="password">
         <input id="password" name="password" type="password" placeholder="password">
       </label>
-      <input class="btn-create" type="submit" value="Sign In">
+      <input id="sign-in--btn" class="btn-create" type="submit" value="Sign In">
     </form>
   </div>
 </div>

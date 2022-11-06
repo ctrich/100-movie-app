@@ -720,6 +720,10 @@ body {
   background-color: hsl(216, 20%, 20%);
 }
 
+.alert {
+  color: red;
+}
+
 /* primary header */
 
 .primary-header {
