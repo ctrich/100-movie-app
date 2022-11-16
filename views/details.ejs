@@ -67,7 +67,9 @@
               </div>
               <div>
                 <h6>Runtime: </h6>
-                <p><%= results.runtime || results.episode_run_time[0] %> min.</p>
+                <% if (locals.results.runtime || locals.results.episode_run_time) { %>
+                  <p><%= results.runtime || results.episode_run_time[0] %> min.</p>
+                <%}%>
               </div>
               <%if (results.created_by) {%>
               <div>
